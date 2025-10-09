@@ -77,15 +77,15 @@ const ProductsShop = () => {
           <ProductShopLoading />
         ) : (
           <div className={clsx(style.sortProduct)}>
-            {product.map((product) => (
+            {product.map((product, index) => (
               <div
+                key={product._id || index}
                 className={clsx(
                   style.product,
                   sortBy === "all" ? style.product : "",
                   sortBy === "tow" ? style.tow : "",
                   sortBy === "one" ? style.one : ""
                 )}
-                key={product._id}
               >
                 <div className={style.image}>
                   <img src={product.images[0]} alt={product.title} />
