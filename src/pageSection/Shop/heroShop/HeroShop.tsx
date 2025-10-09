@@ -27,7 +27,7 @@ const HeroShop = () => {
             </Link>
           </div>
           <h1>Shop Page</h1>
-          <p>Let's design the place you always imagined.</p>
+          <p>Let&apos;s design the place you always imagined.</p>
         </div>
       </div>
     </div>

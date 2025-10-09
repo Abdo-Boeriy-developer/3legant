@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import style from "./ProductsShop.module.css";
 import clsx from "clsx";
 const ProductShopLoading = () => {
-  const [sortBy, setSortBy] = useState<string>("all");
+  const [sortBy] = useState<string>("all");
 
   return (
     <div className={clsx(style.sortProduct)}>
