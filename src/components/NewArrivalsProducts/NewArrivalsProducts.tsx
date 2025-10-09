@@ -15,9 +15,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 // import icons
 import { CiHeart } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
-import { StoreContext } from "@/Context/ContextProvider";
 const NewArrivalsProducts = () => {
-  const { arrivalsProducts } = useContext(StoreContext);
   return (
     <div className={style.newArrivalsProducts}>
       <div className={style.productTop}>

@@ -79,6 +79,7 @@ const ProductsShop = () => {
           <div className={clsx(style.sortProduct)}>
             {product.map((product) => (
               <div
+                key={product._id}
                 className={clsx(
                   style.product,
                   sortBy === "all" ? style.product : "",
