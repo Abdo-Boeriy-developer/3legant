@@ -79,13 +79,13 @@ const ProductsShop = () => {
           <div className={clsx(style.sortProduct)}>
             {product.map((product) => (
               <div
-                key={product._id}
                 className={clsx(
                   style.product,
                   sortBy === "all" ? style.product : "",
                   sortBy === "tow" ? style.tow : "",
                   sortBy === "one" ? style.one : ""
                 )}
+                key={product._id}
               >
                 <div className={style.image}>
                   <img src={product.images[0]} alt={product.title} />
