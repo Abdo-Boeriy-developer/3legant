@@ -1,12 +1,11 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import style from "./filter.module.css";
 import { TbVectorBezier2 } from "react-icons/tb";
 import { CiGrid2V } from "react-icons/ci";
 import { CiGrid2H } from "react-icons/ci";
 import { StoreContext } from "@/Context/ContextProvider";
 const Filter = () => {
-  // const [srotProduct, setSortProduct] = useState<string>("tow");
   const { sortBy, setSortBy } = useContext(StoreContext);
 
   return (
