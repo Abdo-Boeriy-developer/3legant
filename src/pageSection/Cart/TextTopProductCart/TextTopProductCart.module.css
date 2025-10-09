@@ -1,0 +1,45 @@
+.textTop {
+  position: relative;
+}
+.textTop::before {
+  position: absolute;
+  content: "";
+  bottom: -15px;
+  width: 100%;
+  height: 1.3px;
+  background-color: #b1b5c3;
+}
+.textTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.textTitle {
+  width: 50%;
+}
+.listaName {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.textTop h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #121212;
+}
+
+/* Responsive */
+
+@media (max-width: 950px) {
+  .textTitle {
+    width: 25%;
+  }
+}
+@media (max-width: 750px) {
+  .listaName {
+    display: none;
+  }
+}

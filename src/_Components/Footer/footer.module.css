@@ -1,0 +1,139 @@
+.footer {
+  background-color: #141718;
+  padding: 80px 0px 32px 0;
+}
+
+.logoFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.logo h2 {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.logo h3 {
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  width: 1px;
+  height: 20px;
+  background-color: #6c7275;
+}
+
+.logo p {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  color: #e8ecef;
+  margin-top: 4px;
+}
+
+.footerLink ul {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.footerLink ul li {
+  color: #fefefe;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+}
+
+.footer_bottom {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.footer_bottom::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #1f2223;
+  top: -100%;
+}
+.text {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.privacy {
+  display: flex;
+  gap: 1.3125rem;
+}
+
+.text h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #e8ecef;
+}
+
+.text h3 {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #fefefe;
+  cursor: pointer;
+}
+
+.scohil {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.scohil svg {
+  color: #fefefe;
+  border-radius: 1.5px;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+/* Responsive */
+
+@media (max-width: 750px) {
+  .logoFooter,
+  .logo,
+  .footerLink ul {
+    flex-direction: column;
+  }
+
+  .footer_bottom::before {
+    top: -20%;
+  }
+
+  .logo {
+    gap: 22px;
+  }
+  .logo h3 {
+    width: 30px;
+    height: 1px;
+  }
+  .footerLink ul {
+    margin-top: 30px;
+    gap: 32px;
+  }
+  .footer_bottom {
+    flex-direction: column-reverse;
+  }
+  .text {
+    flex-direction: column-reverse;
+    margin-top: 35px;
+    line-height: 0.575rem;
+  }
+}

@@ -1,0 +1,66 @@
+.contactContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.contactInfomation {
+  border: 1px solid #6c7275;
+  padding: 40px 24px 40px 24px;
+  border-radius: 4px;
+}
+
+.contactInfomation {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contactInfomation h2 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.inputName {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inputName div {
+  width: calc(100% / 2 - 10px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.firstInput label,
+.inputName div label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6c7275;
+  text-transform: uppercase;
+}
+
+.firstInput input,
+.inputName div input {
+  border: 1px solid #cbcbcb;
+  border-radius: 6px;
+  padding: 10px 16px;
+}
+.firstInput input::placeholder,
+.inputName div input::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6c7275;
+}
+.firstInput input:focus,
+.inputName div input:focus {
+  outline: 1.5px solid #cbcbcb;
+}
+
+.firstInput {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+}

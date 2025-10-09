@@ -1,0 +1,40 @@
+.cart {
+  margin-bottom: 50px;
+}
+
+.cartContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.products {
+  width: 65%;
+}
+
+.product {
+  width: 120px;
+}
+
+/* Responsive */
+
+@media (max-width: 950px) {
+  .products {
+    width: 60%;
+  }
+
+  .cartSummary {
+    width: 38%;
+  }
+}
+
+@media (max-width: 750px) {
+  .cartContainer {
+    flex-direction: column;
+    gap: 1.5625rem;
+  }
+  .products {
+    width: 100%;
+  }
+  .cartSummary {
+    width: 100%;
+  }
+}

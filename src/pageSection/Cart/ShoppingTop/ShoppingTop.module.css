@@ -1,0 +1,128 @@
+.shoppingCart {
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+.shoppingCartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mediaBack {
+  width: 94%;
+  margin: auto;
+  display: none;
+  align-items: center;
+  color: #605f5f;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.title {
+  color: #000000;
+  font-size: 54px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.cart_box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  gap: 2.49rem;
+}
+.links a {
+  width: 260px;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  color: #b1b5c3;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  position: relative;
+}
+
+.links a::before {
+  position: absolute;
+  content: "";
+  height: 1.5px;
+  width: 100%;
+  background-color: #b1b5c3;
+  bottom: -15px;
+}
+.links a span {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #b1b5c3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fcfcfd;
+}
+
+.towListChekout {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #b1b5c3;
+  color: #fcfcfd;
+}
+
+.linkShop {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #b1b5c3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fcfcfd;
+  display: none;
+}
+
+.linkShop.active {
+  background-color: #23262f;
+}
+
+/* active */
+
+.links a.active {
+  color: #23262f;
+}
+
+.links a.active span,
+.links a.active::before {
+  background-color: #23262f;
+}
+
+/* Responsive */
+
+@media (max-width: 950px) {
+  .links a {
+    width: 230px;
+  }
+}
+
+@media (max-width: 750px) {
+  .mediaBack {
+    display: flex;
+  }
+  .links a {
+    display: none;
+  }
+  .links a.addLink {
+    display: flex;
+  }
+  .linkShop {
+    display: flex;
+  }
+}

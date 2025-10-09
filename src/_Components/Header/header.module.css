@@ -1,0 +1,84 @@
+.header {
+  background-color: #ffffff;
+  padding: 15px 0;
+  position: relative;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  display: none;
+  color: #141718;
+  font-size: 19px;
+  cursor: pointer;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.logo h2 {
+  font-size: 24px;
+  color: #000000;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+}
+
+.links ul {
+  display: flex;
+  align-items: center;
+  gap: 1.775rem;
+}
+.links ul li {
+  font-size: 16px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  color: #6c7275;
+}
+
+.links ul li.active {
+  color: #010101;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 1.025rem;
+}
+.icons svg {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.icons h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #141718;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 13px;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+
+/* Responsive Disign */
+
+@media (max-width: 750px) {
+  .links ul {
+    display: none;
+  }
+  .noneResponsive {
+    display: none;
+  }
+  .menu {
+    display: inline;
+  }
+  .logo h2 {
+    font-size: 20px;
+  }
+}

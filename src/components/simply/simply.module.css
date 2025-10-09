@@ -1,0 +1,58 @@
+.simply {
+  margin-top: 20px;
+}
+
+.simplyContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 72px;
+  line-height: 75px;
+  color: #121212;
+}
+
+.text h2 span {
+  color: #6c7275;
+}
+
+.desc p span {
+  font-size: 17px;
+  color: #121212;
+  font-weight: 700;
+  padding: 0 6px;
+}
+
+.desc p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #6c7275;
+}
+
+@media (max-width: 1000px) {
+  .text h2 {
+    font-size: 45px;
+    line-height: 45px;
+  }
+}
+@media (max-width: 750px) {
+  .simplyContainer {
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+  .text h2 {
+    font-size: 40px;
+    line-height: 45px;
+  }
+  .desc p {
+    margin-top: 15px;
+    font-size: 15px;
+  }
+  .desc p span {
+    font-size: 15px;
+  }
+}

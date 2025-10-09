@@ -1,0 +1,92 @@
+.categories {
+  margin-top: 20px;
+  width: 100%;
+  padding: 0;
+}
+
+.CategorieContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SmRoom,
+.largRoom {
+  width: 49%;
+  min-height: 664px;
+}
+
+.largImage {
+  position: relative;
+  background-color: #f3f5f7;
+  overflow: hidden;
+  width: 100%;
+  height: 664px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* animation: loadding 0.5s infinite; */
+}
+.livinge,
+.living {
+  position: absolute;
+  contain: "";
+  width: 25px;
+  height: 100vw;
+  left: 5%;
+  background-color: rgb(233, 233, 233);
+  animation: loadding 3s infinite;
+}
+
+@keyframes loadding {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+/*  */
+
+.SmRoom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.3125rem;
+}
+
+.smImage {
+  background-color: #f3f5f7;
+  height: 319px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  overflow: hidden;
+}
+.smLivinge,
+.smLiving {
+  position: absolute;
+  contain: "";
+  width: 25px;
+  height: 100vw;
+  left: 5%;
+  background-color: rgb(233, 233, 233);
+  animation: loadding 3s infinite;
+}
+
+/* Responsive */
+
+@media (max-width: 750px) {
+  .CategorieContainer {
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .SmRoom,
+  .largRoom {
+    width: 100%;
+  }
+}

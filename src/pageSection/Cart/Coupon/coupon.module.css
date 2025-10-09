@@ -1,0 +1,58 @@
+.coupon {
+  margin-top: 70px;
+}
+.coupon h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #141718;
+}
+
+.coupon p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6c7275;
+  line-height: 26px;
+  margin-top: 10px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  gap: 0.925rem;
+  width: 424px;
+  border: 1.5px solid #6c7275;
+  margin-top: 12px;
+  color: #28303f;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+.input svg {
+  font-size: 22px;
+  color: #6c7275;
+  margin-top: 3px;
+}
+.input input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.input button {
+  color: #141718;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Responsive */
+
+@media (max-width: 750px) {
+  .coupon {
+    margin-top: 40px;
+    width: 100%;
+  }
+  .input {
+    width: 100%;
+  }
+}

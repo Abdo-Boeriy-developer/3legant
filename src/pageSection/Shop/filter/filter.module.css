@@ -1,0 +1,135 @@
+.filter {
+  width: 23%;
+  max-height: auto;
+}
+
+.text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+  display: none;
+}
+
+.sort h2 {
+  border: 1px solid #e8ecef;
+  font-size: 25px;
+}
+.sort h2.active {
+  background-color: #e8ecef;
+  color: #141718;
+}
+.filterTop {
+  display: flex;
+  align-items: center;
+  gap: 0.5125rem;
+}
+.filterTop h2 {
+  color: #141718;
+  font-size: 22px;
+}
+.filterTop h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #121212;
+}
+
+.categoriesLink {
+  margin-top: 30px;
+}
+
+.categoriesLink h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #121212;
+  text-transform: uppercase;
+}
+
+.ul_Links {
+  margin-top: 15px;
+  overflow-y: scroll;
+  max-height: 226px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ul_Links li {
+  color: #807e7e;
+  font-size: 14px;
+  font-weight: 600;
+}
+.price {
+  margin-top: 45px;
+  height: 222px;
+}
+.price h2 {
+  color: #121212;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.price ul {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.price ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price ul li label {
+  color: #6c7275;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.price ul li input {
+  border: 1px solid #6c7275;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  appearance: none;
+  align-items: center;
+  justify-content: center;
+}
+.price ul li input:checked {
+  background-color: #141718;
+  border: 1px solid #6c7275;
+  position: relative;
+  border-radius: 4px;
+}
+.price ul li input:checked::after {
+  content: "✓";
+  color: white;
+}
+
+/* Responsive */
+
+@media (max-width: 950px) {
+  .filter {
+    width: 25%;
+  }
+}
+@media (max-width: 750px) {
+  .filter {
+    width: 100%;
+  }
+  .sort {
+    display: flex;
+  }
+  .price,
+  .categoriesLink {
+    display: none;
+  }
+}

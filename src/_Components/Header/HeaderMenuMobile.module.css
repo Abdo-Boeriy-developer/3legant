@@ -1,0 +1,132 @@
+.headerMenu {
+  position: absolute;
+  top: -60%;
+  left: -400px;
+  background-color: #ffffff;
+  height: 100vh;
+  margin-bottom: 0;
+  padding: 20px 0;
+  z-index: 999;
+  transition: 0.5s;
+  min-width: 400px;
+}
+
+.headerMenu.active {
+  left: 0;
+}
+
+/*  */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  flex-direction: column;
+  height: 90%;
+}
+
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo h2 {
+  font-size: 20px;
+  font-weight: 500;
+}
+.logo h3 {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.searchBox {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #6c7275;
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+
+.searchBox button {
+  cursor: pointer;
+}
+
+.searchBox input {
+  outline: none;
+  border: none;
+  width: 100%;
+}
+.menuLinks {
+  margin-top: 15px;
+}
+.menuLinks ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9375rem;
+}
+
+.menuLinks ul li {
+  border-bottom: 1px solid #6c727542;
+  padding: 5px 0;
+}
+.cart ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5375rem;
+}
+.cart ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #6c72754a;
+  padding: 8px 0;
+}
+
+.cart ul li h2 {
+  color: #6c7275;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.cart ul li .shoppingCart {
+  display: flex;
+  align-items: center;
+  gap: 0.9375rem;
+}
+.cart ul li .shoppingCart h3 {
+  width: 18px;
+  height: 18px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+.cart ul li .shoppingCart svg {
+  font-size: 20px;
+}
+
+.signIn {
+  padding: 10px 15px 10px 26px;
+  background-color: #141718;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: 25px;
+  color: #ffffff;
+  width: 100%;
+}
+
+.schoil {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+.schoil svg {
+  font-size: 25px;
+  cursor: pointer;
+}

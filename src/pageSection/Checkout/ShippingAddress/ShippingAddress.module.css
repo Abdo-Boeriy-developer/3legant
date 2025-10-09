@@ -1,0 +1,112 @@
+/* .shippingAddress {
+  border: 1px solid #6c7275;
+  padding: 40px 24px 40px 24px;
+  border-radius: 4px;
+} */
+
+.shippingContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: 1px solid #6c7275;
+  padding: 40px 24px 40px 24px;
+  border-radius: 4px;
+}
+
+.shippingContainer h2 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #141718;
+}
+
+.firstInput {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.stateCode div label,
+.firstInput label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6c7275;
+  text-transform: uppercase;
+}
+
+.stateCode div input,
+.firstInput select,
+.firstInput input {
+  border: 1px solid #cbcbcb;
+  border-radius: 6px;
+  padding: 10px 16px;
+}
+.stateCode div input::placeholder,
+.firstInput select::placeholder,
+.firstInput input::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6c7275;
+}
+.stateCode div input:focus,
+.firstInput select:focus,
+.firstInput input:focus {
+  outline: 1.5px solid #cbcbcb;
+}
+
+.firstInput select option {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6c7275;
+  background-color: #ffffff;
+}
+
+.firstInput select {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6c7275;
+}
+
+.stateCode {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stateCode div {
+  width: calc(100% / 2 - 10px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+
+.check input {
+  appearance: none;
+  border: 1px solid #6c7275;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.check input:checked {
+  background-color: black;
+  color: white;
+}
+.check input:checked::before {
+  content: "✓";
+  color: white;
+}
+.check label {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6c7275;
+  cursor: pointer;
+}

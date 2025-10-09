@@ -1,0 +1,65 @@
+.banner {
+  margin-top: 50px;
+}
+
+.bannerContainer {
+  display: flex;
+  align-items: center;
+  height: 532px;
+}
+.bannerText,
+.imageBanner {
+  width: 50%;
+  height: 532px;
+}
+.imageBanner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bannerText {
+  background-color: #f3f5f7;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 45px;
+}
+
+.sale {
+  font-size: 16px;
+  font-weight: 700;
+  color: #377dff;
+}
+
+.title {
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 600;
+  color: #141718;
+  font-family: "Poppins", sans-serif;
+}
+
+.bannerText p {
+  font-size: 17px;
+  font-weight: 300;
+  letter-spacing: 0px;
+  list-style: 2rem;
+  color: #121212;
+  font-family: "Inter", sans-serif;
+}
+
+@media (max-width: 750px) {
+  .bannerContainer {
+    flex-direction: column;
+    height: auto;
+  }
+  .bannerText,
+  .imageBanner {
+    width: 100%;
+  }
+  .bannerText {
+    padding: 25px 45px;
+  }
+}

@@ -1,0 +1,284 @@
+.productShop {
+  width: 75%;
+}
+
+.textTop_Sort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.textTop_Sort h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.sortBy {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  cursor: pointer;
+}
+.option svg {
+  margin-top: 2px;
+  font-size: 28px;
+}
+.sortBy h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #121212;
+}
+
+.sortBy ul {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.sortBy ul li {
+  border: 1px solid #e8ecef;
+  color: #6c7275;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.sortBy ul li.active {
+  background-color: #e8ecef;
+  color: #141718;
+}
+
+/*  */
+
+.sortProduct {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-top: 40px;
+}
+
+.product {
+  width: calc(100% / 3 - 10px);
+  height: 433px;
+  background-color: #f3f5f7;
+  overflow: hidden;
+}
+
+.product.tow {
+  width: calc(100% / 2 - 10px);
+  height: auto;
+  background-color: #f3f5f7;
+}
+
+.product.one {
+  width: calc(100% / 1 - 10px);
+  height: auto;
+  background-color: #f3f5f7;
+}
+
+.new {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 10px 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.new h2,
+.new h3 {
+  padding: 4px 14px 4px 8px;
+  border-radius: 4px;
+  width: min-content;
+}
+.new h2 {
+  background-color: #ffffff;
+  color: #121212;
+}
+.new h3 {
+  background-color: #38cb89;
+  color: #fefefe;
+}
+.image {
+  width: 100%;
+  height: 349px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  overflow: hidden;
+}
+.image:hover .addToCart {
+  bottom: 18px;
+}
+.addToCart {
+  position: absolute;
+  bottom: -45px;
+  width: 70%;
+  padding: 8px 24px 8px 4px;
+  background-color: #141718;
+  border-radius: 8px;
+  color: #fefefe;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  transition-delay: 0.1s;
+}
+.addToCart button {
+  cursor: pointer;
+}
+
+.image img {
+  max-width: 225px;
+}
+
+.title_price {
+  background-color: #ffffff;
+  height: 100%;
+  padding: 10px 0;
+}
+
+.stars {
+  display: flex;
+  gap: 0.125rem;
+  align-items: center;
+  margin-top: 4px;
+  color: #343839;
+}
+.stars svg {
+  font-size: 17px;
+}
+
+.title_price h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #141718;
+  margin-top: 8px;
+  line-height: 18px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.price h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #121212;
+}
+
+.price p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6c7275;
+  text-decoration: line-through;
+  margin-top: 8px;
+}
+
+.showMore {
+  margin: auto;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #141718;
+  padding: 6px 40px 6px 40px;
+  border-radius: 80px;
+  width: fit-content;
+  cursor: pointer;
+  color: #141718;
+}
+
+/* responsive */
+
+@media (max-width: 950px) {
+  .productShop {
+    width: 71%;
+  }
+  .image img {
+    max-width: 205px;
+  }
+}
+@media (max-width: 750px) {
+  .productShop {
+    width: 100%;
+  }
+  .image {
+    height: 203px;
+  }
+  .image img {
+    max-width: 152px;
+    object-fit: cover;
+    height: 203px;
+  }
+  .new {
+    padding: 8px 20px;
+  }
+
+  .new h2,
+  .new h3 {
+    padding: 2px 10px 2px 6px;
+    font-size: 12px;
+  }
+  .sortBy ul {
+    display: none;
+  }
+
+  .product {
+    width: calc(100% / 2 - 5px);
+  }
+  .product.tow {
+    width: calc(100% / 2 - 5px);
+  }
+
+  .product.one {
+    width: calc(100% / 1 - 5px);
+  }
+}
+
+/* Add to Cart */
+
+/*  */
+.loader {
+  font-size: 48px;
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #263238;
+  box-sizing: border-box;
+  text-shadow: 0 0 2px #fff, 0 0 1px #fff, 0 0 1px #fff;
+  letter-spacing: 2px;
+  position: relative;
+}
+.loader::after {
+  content: "Loading";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #a93434;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  animation: animloader 6s linear infinite;
+}
+
+@keyframes animloader {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

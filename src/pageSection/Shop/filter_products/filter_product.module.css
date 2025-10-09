@@ -1,0 +1,14 @@
+.filter_product {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Responsive */
+
+@media (max-width: 750px) {
+  .filter_product {
+    flex-direction: column;
+    gap: 1.5625rem;
+  }
+}

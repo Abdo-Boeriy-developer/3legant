@@ -1,0 +1,169 @@
+.productBottom {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.productBottom::before {
+  position: absolute;
+  content: "";
+  height: 0.5px;
+  width: 100%;
+  background-color: #b1b5c35d;
+  bottom: -15px;
+}
+.price_quantity_total,
+.iamgeProduct {
+  width: 50%;
+}
+
+.iamgeProduct {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.img {
+  background-color: #f3f5f7;
+  max-width: fit-content;
+}
+.img img {
+  width: 80px;
+  height: 96px;
+  object-fit: cover;
+}
+
+.textImageProduct {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.textImageProduct h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #141718;
+}
+
+.textImageProduct p {
+  color: #6c7275;
+  font-size: 12px;
+  font-weight: 400;
+}
+.textImageProduct button {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6c7275;
+  gap: 5px;
+  cursor: pointer;
+}
+.textImageProduct button svg {
+  font-size: 15px;
+  margin-top: 2px;
+}
+
+.price_quantity_total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #6c7275;
+  padding: 6px 8px;
+  border-radius: 4px;
+  gap: 0.625rem;
+}
+.quantity button {
+  cursor: pointer;
+  font-size: 14px;
+  color: #121212;
+}
+
+.price h2,
+.total h2 {
+  color: #121212;
+  font-size: 18px;
+  font-weight: 400;
+}
+.total h2 {
+  font-weight: 600;
+}
+
+.mediaRemove,
+.textImageProduct .quantity {
+  display: none;
+}
+
+/* Responsive */
+
+@media (max-width: 950px) {
+  .iamgeProduct {
+    width: 25%;
+  }
+  .img img {
+    width: 60px;
+    height: 70px;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 750px) {
+  .productBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .iamgeProduct {
+    width: 60% !important;
+  }
+
+  .img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img img {
+    width: 100%;
+  }
+
+  .price,
+  .quantity {
+    display: none;
+  }
+
+  .mediaRemove {
+    display: flex;
+    justify-content: right;
+    cursor: pointer;
+    font-size: 22px;
+    margin-top: 10px;
+  }
+
+  .textImageProduct .quantity {
+    display: flex;
+    align-items: center;
+    padding: 4px 5px;
+  }
+
+  .textImageProduct .quantity h2,
+  .textImageProduct .quantity button {
+    font-size: 12px;
+  }
+  .textImageProduct .remove {
+    display: none;
+  }
+
+  .price_quantity_total,
+  .iamgeProduct {
+    width: 20%;
+  }
+}
