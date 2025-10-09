@@ -47,6 +47,7 @@ const page = () => {
             </li>
           </ul>
         </div>
+        
         <div className={style.purchase}>
           <button>Purchase history</button>
         </div>
