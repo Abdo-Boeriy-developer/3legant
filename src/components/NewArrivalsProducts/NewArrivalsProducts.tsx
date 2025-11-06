@@ -131,7 +131,7 @@ const NewArrivalsProducts = () => {
                             </div>
                           </div>
                           <div className={style.image}>
-                            <Link href={`/ProductDetails/${pro._id}`}>
+                            <Link href={`/productDetails/${pro._id}`}>
                               <img src={pro.images[0]} alt="" />
                             </Link>
                             <div
