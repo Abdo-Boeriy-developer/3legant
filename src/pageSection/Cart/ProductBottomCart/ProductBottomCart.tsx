@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 
 import Image from "next/image";
+import LoadingProductBottomCart from "./LoadingProductBottomCart/LoadingProductBottomCart";
 interface ProductType {
   productId: string;
   quantity: number;
@@ -44,10 +45,7 @@ const ProductBottomCart = () => {
   return (
     <>
       {loading ? (
-        <div className={style.loading}>
-          <Image src={"/empty_box.webp"} alt="" width={250} height={300} />
-          <h1>There are no product on the cart 😢</h1>
-        </div>
+        <LoadingProductBottomCart />
       ) : cartData.length > 0 ? (
         cartData.map((pro) => {
           const itemTotal = Number(pro.product.price) * pro.quantity || 0;

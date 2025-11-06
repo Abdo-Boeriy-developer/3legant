@@ -39,9 +39,13 @@ const ClearCart = () => {
   };
 
   return (
-    <div className={style.clearCart} onClick={() => handleClearCart()}>
-      <button type="button">{loading ? "Loading..." : "Clear Cart"}</button>
-    </div>
+    <>
+      {cartData.length > 0 ? (
+        <div className={style.clearCart} onClick={() => handleClearCart()}>
+          <button type="button">{loading ? "Loading..." : "Clear Cart"}</button>
+        </div>
+      ) : null}
+    </>
   );
 };
 

@@ -3,8 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import style from "./offers.module.css";
 import { LuTicketPercent } from "react-icons/lu";
 import { RiCloseLine } from "react-icons/ri";
-import Link from "next/link";
-import OffersLoading from "./OffersLoading";
+import OffersLoading from "./LoadingOffer/OffersLoading";
 import { usePathname } from "next/navigation";
 
 const Offers = () => {
