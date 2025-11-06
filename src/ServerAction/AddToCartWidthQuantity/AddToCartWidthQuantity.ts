@@ -1,13 +1,15 @@
 "use client";
 
 import axios from "axios";
-
+import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 interface AddToCartParams {
   productId: string;
   quantity: number;
 }
 
 export const addToCart = async ({ productId, quantity }: AddToCartParams) => {
+  const token = Cookies.get("authorization");
   try {
     const data = await axios.post(
       "https://3legent-backend.vercel.app/api/v1/cart",
@@ -16,16 +18,16 @@ export const addToCart = async ({ productId, quantity }: AddToCartParams) => {
         quantity,
       },
       {
-        withCredentials: true,
-        // headers: {
-        //   cookies:
-        //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGQ2YWUwMjA5MTQ4NWU5OGE4ODUwYjgiLCJlbWFpbCI6ImFkbWluMUBtYWlsLmNvbSIsImlhdCI6MTc1OTY5MjU0MywiZXhwIjoxNzYwMjk3MzQzfQ.6pRVtAqYmT81IeLhwSNtkNN0dUw4fkzBHIqbSmIokYg",
-        //   "Content-Type": "application/json",
-        // },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
       }
     );
 
-    console.log(data.data);
+    if (data.data.status == "success") {
+      toast.success(`Product added to cart `);
+    }
     return data.data;
   } catch (error) {
     console.log(" error:", error);

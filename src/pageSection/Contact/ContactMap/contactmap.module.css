@@ -1,0 +1,75 @@
+.ContactMap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 404px;
+}
+
+.form,
+.map {
+  width: 49%;
+  height: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form div label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6c7275;
+  text-transform: uppercase;
+}
+.form div input,
+.form div textarea {
+  padding: 12px 12px;
+  border: 1px solid #cbcbcb;
+  border-radius: 6px;
+}
+.form div input:focus,
+.form div textarea:focus {
+  outline: 1px solid #cbcbcb;
+}
+
+.form button {
+  text-align: start;
+  padding: 6px 40px 6px 40px;
+  border-radius: 8px;
+  background-color: #141718;
+  color: #ffffff;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.map iframe {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 750px) {
+  .ContactMap {
+    flex-direction: column-reverse;
+    height: auto;
+    gap: 20px;
+  }
+  .form,
+  .map {
+    width: 100%;
+  }
+  .map {
+    height: 400px;
+  }
+  .form button {
+    text-align: center;
+    width: 100%;
+  }
+}

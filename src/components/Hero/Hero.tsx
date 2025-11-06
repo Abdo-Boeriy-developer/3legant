@@ -14,6 +14,7 @@ import {
   Autoplay,
 } from "swiper/modules";
 import HeroLoading from "./HeroLoading";
+import toast from "react-hot-toast";
 
 const Hero = () => {
   const [heroData, setHeroData] = useState<string[] | null>(null);
@@ -21,13 +22,13 @@ const Hero = () => {
   useEffect(() => {
     const HeroApi = async () => {
       try {
-        const respones = await fetch("http://localhost:3000/api/getHero");
+        const respones = await fetch("/api/heroSection");
         const data = await respones.json();
         if (data) {
-          setHeroData(data);
+          setHeroData(data.data);
         }
       } catch (error) {
-        console.log("Error", error);
+        console.error(`Error: ${error}`);
       } finally {
         setLoading(false);
       }

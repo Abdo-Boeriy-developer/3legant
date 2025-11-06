@@ -1,12 +1,13 @@
 import React from "react";
 import style from "./Banner.module.css";
 import Link from "next/link";
+import Image from "next/image";
 const Banner = () => {
   return (
     <div className={style.banner}>
       <div className={style.bannerContainer}>
         <div className={style.imageBanner}>
-          <img src="/9f9efb2e4439d804a7b6bed916b72b3bda48939a.jpg" alt="" />
+          <Image src="/contactus.jpg" alt="" width={500} height={0} />
         </div>
         <div className={style.bannerText}>
           <h2 className={style.sale}>sale up to 35% off</h2>

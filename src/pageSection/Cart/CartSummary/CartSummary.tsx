@@ -1,8 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import style from "./cartSummary.module.css";
+import { CartStore } from "@/Context/CartContext";
 const CartSummary = () => {
   const [radio, setRadio] = useState<string>("free");
+  const { cartData } = useContext(CartStore);
+
+  const totalCartPrice = cartData.reduce((acc, item) => {
+    return acc + item.product.price * item.quantity;
+  }, 0);
 
   return (
     <div className={style.cartSummary}>
@@ -47,12 +53,21 @@ const CartSummary = () => {
       </ul>
       <ul className={style.subTotal}>
         <li>
-          <p>Subtotal</p>
-          <h3>$1234.00</h3>
+          <p>Total</p>
+          <h3>$ {totalCartPrice}</h3>
         </li>
         <li className={style.total}>
           <h2>Subtotal</h2>
-          <h2>$1234.00</h2>
+          <h2>
+            $
+            {radio === "free"
+              ? totalCartPrice
+              : radio === "express"
+              ? totalCartPrice + 15
+              : radio === "pickUp"
+              ? totalCartPrice + 50
+              : ""}
+          </h2>
         </li>
       </ul>
       <button>Chekout</button>

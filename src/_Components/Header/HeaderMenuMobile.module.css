@@ -1,6 +1,7 @@
 .headerMenu {
-  position: absolute;
-  top: -60%;
+  position: fixed;
+  /* top: -60%; */
+  top: 0;
   left: -400px;
   background-color: #ffffff;
   height: 100vh;
@@ -9,6 +10,7 @@
   z-index: 999;
   transition: 0.5s;
   min-width: 400px;
+  /* width: 100%; */
 }
 
 .headerMenu.active {
@@ -70,12 +72,13 @@
   border-bottom: 1px solid #6c727542;
   padding: 5px 0;
 }
-.cart ul {
+.cart {
   display: flex;
   flex-direction: column;
   gap: 0.5375rem;
 }
-.cart ul li {
+
+.cart a {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -83,18 +86,19 @@
   padding: 8px 0;
 }
 
-.cart ul li h2 {
+.cart a h2 {
   color: #6c7275;
   font-size: 18px;
   font-weight: 500;
 }
 
-.cart ul li .shoppingCart {
+.shoppingCart {
   display: flex;
   align-items: center;
-  gap: 0.9375rem;
+  gap: 15px;
 }
-.cart ul li .shoppingCart h3 {
+
+.shoppingCart h3 {
   width: 18px;
   height: 18px;
   background-color: black;
@@ -105,7 +109,7 @@
   align-items: center;
   font-size: 12px;
 }
-.cart ul li .shoppingCart svg {
+.shoppingCart svg {
   font-size: 20px;
 }
 
@@ -129,4 +133,16 @@
 .schoil svg {
   font-size: 25px;
   cursor: pointer;
+}
+
+@media (max-width: 750px) {
+  .headerMenu {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 450px) {
+  .headerMenu {
+    max-width: 350px;
+  }
 }

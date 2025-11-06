@@ -1,20 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/_Components/Header/Header";
-import Footer from "@/_Components/Footer/Footer";
+// import Footer from "@/_Components/Footer/Footer";
 import Offers from "@/_Components/Offers/Offers";
 import ContextProvider from "@/Context/ContextProvider";
+import Footer from "@/_Components/Footer/Footer";
+import { Toaster } from "react-hot-toast";
+import InternetStutes from "@/_Components/InternetStutes/InternetStutes";
+import CartContext from "@/Context/CartContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "3legant",
@@ -29,15 +34,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ContextProvider>
-          <Offers />
-          <Header />
-          {/* <div className="container"> */}
-          {children}
-          {/* </div> */}
-          <Footer />
+          <CartContext>
+            <Offers />
+            <Header />
+            {children}
+            <Toaster position="top-right" reverseOrder={false} />
+            <InternetStutes />
+            <Footer />
+          </CartContext>
         </ContextProvider>
       </body>
     </html>

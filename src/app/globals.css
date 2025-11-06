@@ -41,7 +41,7 @@ body {
 .swiper-pagination-clickable {
   display: none;
 }
-
+button,
 a,
 p,
 label {

@@ -1,0 +1,37 @@
+.myAccount {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.accountSideBar {
+  width: 25%;
+}
+
+.myAccountDetails {
+  width: 70%;
+}
+
+@media (max-width: 950px) {
+  .accountSideBar {
+    width: 30%;
+  }
+
+  .myAccountDetails {
+    width: 65%;
+  }
+}
+
+@media (max-width: 750px) {
+  .myAccount {
+    flex-direction: column;
+    gap: 1.5625rem;
+  }
+  .accountSideBar {
+    width: 100%;
+  }
+
+  .myAccountDetails {
+    width: 100%;
+  }
+}

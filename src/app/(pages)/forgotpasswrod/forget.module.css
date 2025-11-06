@@ -1,0 +1,149 @@
+.singup {
+  height: 100vh;
+}
+.signupContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.image {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f5f7;
+  position: relative;
+}
+
+.image h2 {
+  position: absolute;
+  font-weight: 500;
+  font-size: 24px;
+  top: 20px;
+  color: #000000;
+}
+
+.image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.inputs {
+  width: 50%;
+}
+
+.inputs form {
+  width: 456px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.inputs form h2 {
+  font-size: 40px;
+  font-weight: 500;
+  color: #141718;
+}
+
+.inputs form p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6c7275;
+}
+.inputs form p a {
+  color: #38cb89;
+  cursor: pointer;
+}
+
+.inputs form input {
+  border: none;
+  border-bottom: 1px solid #eaeef1;
+  padding: 8px;
+}
+.inputs form input:focus {
+  outline: none;
+}
+
+.passwrod {
+  position: relative;
+}
+.passwrod input {
+  width: 100%;
+}
+.passwrod button {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.checkbox div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.checkbox input {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+.checkbox label {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  color: #6c7275;
+}
+
+.checkbox button {
+  color: #141718;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.inputs form .buttonSignup {
+  width: 100%;
+  background-color: #141718;
+  padding: 10px 40px 10px 40px;
+  border-radius: 8px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.inputError {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  position: relative;
+}
+.inputError span {
+  font-size: 10px;
+  color: red;
+  position: absolute;
+  bottom: -25px;
+}
+
+@media (max-width: 950px) {
+  .image {
+    width: 100%;
+  }
+  .signupContainer {
+    flex-direction: column;
+    gap: 35px;
+  }
+  .inputs form,
+  .inputs {
+    width: 95%;
+    margin-bottom: 50px;
+  }
+}

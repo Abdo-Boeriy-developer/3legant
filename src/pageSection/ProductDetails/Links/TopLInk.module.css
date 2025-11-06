@@ -1,0 +1,18 @@
+.containerLink {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.containerLink a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #605f5f;
+  font-size: 14px;
+  font-weight: 500;
+}
+.containerLink a:last-child {
+  color: #121212;
+}

@@ -11,7 +11,6 @@ interface ShoppingTopProps {
 
 const ShoppingTop: React.FC<ShoppingTopProps> = ({ text }) => {
   const params = usePathname();
-  console.log(params);
 
   return (
     <div className={style.shoppingCart}>

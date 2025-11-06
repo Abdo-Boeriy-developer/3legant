@@ -5,11 +5,13 @@ import React from "react";
 
 const Shop = () => {
   return (
-    <div className="container">
-      <HeroShop />
-      <Filter_products />
+    <>
+      <div className="container">
+        <HeroShop />
+        <Filter_products />
+      </div>
       <NewsLetter />
-    </div>
+    </>
   );
 };
 

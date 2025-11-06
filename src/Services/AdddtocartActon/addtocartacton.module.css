@@ -1,0 +1,15 @@
+.addToCartStyle {
+  /* position: absolute; */
+  padding: 8px 24px 8px 4px;
+  background-color: #141718;
+  border-radius: 8px;
+  color: #fefefe;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+}
+.addToCartStyle button {
+  cursor: pointer;
+  color: white;
+}

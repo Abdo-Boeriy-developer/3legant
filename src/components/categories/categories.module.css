@@ -14,6 +14,7 @@
 .largRoom {
   width: 49%;
   min-height: 664px;
+  overflow: hidden;
 }
 
 .largImage {
@@ -127,7 +128,6 @@
 
 @media (max-width: 950px) {
   .smImage img {
-
     width: 80%;
   }
 }

@@ -10,7 +10,7 @@ const TextTopProductCart = () => {
         <div className={style.listaName}>
           <h2>Quantity</h2>
           <h2>Price</h2>
-          <h2>Subtitle</h2>
+          <h2>Total Price</h2>
         </div>
       </div>
     </>

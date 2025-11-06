@@ -1,0 +1,26 @@
+.InternetStutes {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  background-color: tomato;
+  z-index: 9999;
+}
+.InternetStutes h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+@media (max-width: 750px) {
+  .InternetStutes h2 {
+    font-size: 17px;
+  }
+}

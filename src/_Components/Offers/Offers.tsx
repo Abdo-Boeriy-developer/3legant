@@ -1,21 +1,47 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import style from "./offers.module.css";
 import { LuTicketPercent } from "react-icons/lu";
 import { RiCloseLine } from "react-icons/ri";
 import Link from "next/link";
 import OffersLoading from "./OffersLoading";
+import { usePathname } from "next/navigation";
 
 const Offers = () => {
   const [closeOffer, setCloseOffer] = useState(true);
-  const [newsBar, setNewsBar] = useState<string>("");
+  const [newsBar, setNewsBar] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
+  const pathName = usePathname();
+
+  useMemo(() => {
+    if (
+      pathName === "/signup" ||
+      pathName === "/login" ||
+      pathName === "/myAccount" ||
+      pathName === "/orders" ||
+      pathName === "/logout" ||
+      pathName === "/address" ||
+      pathName === "/cart" ||
+      pathName === "/checkout" ||
+      pathName === "/orderComplete" ||
+      pathName === "/wishlist" ||
+      pathName === "/forgotpasswrod" ||
+      pathName === "/verifyPasswrodOtp" ||
+      pathName === "/resetPasswrod"
+    ) {
+      setCloseOffer(false);
+      return;
+    } else {
+      setCloseOffer(true);
+    }
+  }, [pathName]);
+
   useEffect(() => {
     const newsBarNot = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/getnewbar");
+        const response = await fetch("/api/getNewbar");
         const data = await response.json();
-        setNewsBar(data.data.newsbar);
+        setNewsBar(data.data);
       } catch (error) {
         console.log("Error", error);
       } finally {
@@ -24,25 +50,26 @@ const Offers = () => {
     };
     newsBarNot();
   }, []);
+
+  if (!closeOffer) return null;
+
   if (loading)
     return (
       <>
         <OffersLoading />
       </>
     );
+
   return (
     <>
-      {closeOffer && (
+      {closeOffer ? (
         <div className={style.offer}>
           <div className={style.offerContainer}>
             <div className={style.noneMedia}></div>
             <div className={style.limited_Time}>
               <LuTicketPercent />
-              {/* <h2>30 % off storeWide</h2> */}
-              {/* <FaMinus /> */}
-              {/* <h2>Limited time</h2> */}
               <h2>{newsBar}</h2>
-              <Link href={""}>Shop Now</Link>
+              {/* <Link href={""}>Shop Now</Link> */}
             </div>
             <div
               className={style.closeOffer}
@@ -52,7 +79,7 @@ const Offers = () => {
             </div>
           </div>
         </div>
-      )}
+      ) : null}
     </>
   );
 };

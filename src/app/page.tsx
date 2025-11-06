@@ -8,8 +8,6 @@ import NewsLetter from "@/components/newsLetter/NewsLetter";
 import Simply from "@/components/simply/Simply";
 
 export default function Home() {
-  // "build": "next build --turbopack",
-
   return (
     <>
       <div className="container">

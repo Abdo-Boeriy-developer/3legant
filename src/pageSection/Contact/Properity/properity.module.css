@@ -1,0 +1,38 @@
+.properity {
+  background-color: #f3f5f7;
+}
+
+.proContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.box {
+  padding: 48px 32px 48px 2px;
+  width: 25%;
+}
+.box svg {
+  font-size: 30px;
+}
+.box h2 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #141718;
+  margin-top: 8px;
+}
+
+.box p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6c7275;
+  margin-top: 5px;
+}
+
+@media (max-width: 750px) {
+  .box {
+    padding: 48px 32px 48px 2px;
+    width: 50%;
+  }
+}

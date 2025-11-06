@@ -1,61 +1,22 @@
-// "use client";
-// import React, { createContext, useEffect, useState } from "react";
-
-// interface children {
-//   children: React.ReactNode;
-// }
-
-// interface StoreContextType {
-//   setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
-//   openMenu: boolean;
-//   sortBy: string;
-//   setSortBy: React.Dispatch<React.SetStateAction<string>>;
-// }
-
-// export const StoreContext = createContext<StoreContextType>({
-//   setOpenMenu: () => {},
-//   openMenu: false,
-//   sortBy: "",
-//   setSortBy: () => {},
-// });
-
-// const ContextProvider = ({ children }: children) => {
-//   const [openMenu, setOpenMenu] = useState(false);
-//   const [sortBy, setSortBy] = useState<string>("all");
-
-//   return (
-//     <>
-//       <StoreContext.Provider
-//         value={{
-//           openMenu,
-//           setOpenMenu,
-//           sortBy,
-//           setSortBy,
-//         }}
-//       >
-//         {children}
-//       </StoreContext.Provider>
-//     </>
-//   );
-// };
-
-// export default ContextProvider;
-
 "use client";
-import React, { createContext, useState, useEffect } from "react";
-import { ArrivalsProduct } from "@/Types/arrivalsProductsType";
+import axios from "axios";
+import React, { createContext, useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import { PriceRangeType } from "@/Types/priceRangeInput";
 
-interface ChildrenProps {
+interface children {
   children: React.ReactNode;
 }
 
 interface StoreContextType {
-  openMenu: boolean;
   setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  openMenu: boolean;
   sortBy: string;
   setSortBy: React.Dispatch<React.SetStateAction<string>>;
-  arrivalsProducts: ArrivalsProduct[];
-  setArrivalsProducts: React.Dispatch<React.SetStateAction<ArrivalsProduct[]>>;
+  selectedCategory: string | null;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<null | string>>;
+  selectedPriceRange: PriceRangeType;
+  setSelectedPriceRange: React.Dispatch<React.SetStateAction<PriceRangeType>>;
 }
 
 export const StoreContext = createContext<StoreContextType>({
@@ -63,36 +24,66 @@ export const StoreContext = createContext<StoreContextType>({
   setOpenMenu: () => {},
   sortBy: "all",
   setSortBy: () => {},
-  arrivalsProducts: [],
-  setArrivalsProducts: () => {},
+  selectedCategory: null,
+  setSelectedCategory: () => {},
+  selectedPriceRange: {
+    label: "All Price",
+    id: "allPrice",
+    min: null,
+    max: null,
+  },
+  setSelectedPriceRange: () => {},
 });
 
-const ContextProvider = ({ children }: ChildrenProps) => {
+const ContextProvider = ({ children }: children) => {
   const [openMenu, setOpenMenu] = useState(false);
-  const [sortBy, setSortBy] = useState("all");
-  const [arrivalsProducts, setArrivalsProducts] = useState<ArrivalsProduct[]>(
-    []
-  );
+  const [sortBy, setSortBy] = useState<string>("all");
+  const [selectedCategory, setSelectedCategory] = useState<null | string>(null);
+  const [selectedPriceRange, setSelectedPriceRange] = useState<PriceRangeType>({
+    label: "All Price",
+    min: null,
+    max: null,
+    id: "allPrice",
+  });
 
-  // مثال بسيط لتجربة الـ context
-  // useEffect(() => {
-  //   // هنا ممكن بعدين تجيب الداتا من API
-  //   // setArrivalsProducts(data);
-  // }, []);
+  const getCartApi = async () => {
+    const token = Cookies.get("authorization");
+
+    try {
+      const response = await axios.get(
+        `https://3legent-backend.vercel.app/api/v1/cart`,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
+  useEffect(() => {
+    getCartApi();
+  }, []);
 
   return (
-    <StoreContext.Provider
-      value={{
-        openMenu,
-        setOpenMenu,
-        sortBy,
-        setSortBy,
-        arrivalsProducts,
-        setArrivalsProducts,
-      }}
-    >
-      {children}
-    </StoreContext.Provider>
+    <>
+      <StoreContext.Provider
+        value={{
+          openMenu,
+          setOpenMenu,
+          sortBy,
+          setSortBy,
+          selectedCategory,
+          setSelectedCategory,
+          selectedPriceRange,
+          setSelectedPriceRange,
+        }}
+      >
+        {children}
+      </StoreContext.Provider>
+    </>
   );
 };
 

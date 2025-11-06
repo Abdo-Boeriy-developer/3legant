@@ -1,7 +1,10 @@
+.slide {
+  overflow: hidden;
+}
+
 .newArrivalsProducts {
   margin-top: 15px;
 }
-
 .productTop {
   display: flex;
   justify-content: space-between;
@@ -65,6 +68,7 @@
   min-width: 262px;
   background-color: #f3f5f7;
   padding: 10px;
+  overflow: hidden;
 }
 .product {
   padding: 10px;
@@ -72,6 +76,7 @@
   justify-content: space-between;
   flex-direction: column;
   height: 100%;
+  overflow: hidden;
 }
 
 .new_whislist {
@@ -127,25 +132,48 @@
   overflow: hidden;
   margin: auto;
 }
-.image img {
-  object-fit: contain;
+
+.addtocart {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  bottom: 25%;
+  right: -100%;
+  transition: 0.5s;
 }
-.addToCart {
-  padding: 8px 24px 8px 24px;
-  border-radius: 4px;
-  background-color: #141718;
+
+.product:hover .addtocart {
+  right: 10%;
+}
+/*  */
+
+/* .add {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 80%;
+  bottom: 25%;
+  right: -100%;
+  transition: 0.5s;
+  background-color: #38cb89;
+  padding: 8px 24px 8px 4px;
+  border-radius: 8px;
   color: #fefefe;
   text-align: center;
-  font-weight: 500;
-  font-family: "Inter", sans-serif;
   cursor: pointer;
-  margin-top: 10px;
+  transition: 0.3s;
+  width: 80%;
+  cursor: no-drop;
 }
-.addToCart button {
-  width: 100%;
-  cursor: pointer;
-  height: 100%;
-  font-family: "Inter", sans-serif;
+.product:hover .add {
+  right: 10%;
+} */
+.image img {
+  object-fit: contain;
 }
 
 .reting_title_price {
@@ -188,4 +216,11 @@
   font-weight: 400;
   color: #6c7275;
   text-decoration: line-through;
+}
+
+/*  */
+
+.inWisthlist {
+  color: #38cb89;
+  cursor: no-drop;
 }

@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import style from "./HeaderMenuMobile.module.css";
 import { RiCloseLine } from "react-icons/ri";
 import { CiSearch } from "react-icons/ci";
@@ -11,8 +11,16 @@ import { LuInstagram } from "react-icons/lu";
 import { SlSocialFacebook } from "react-icons/sl";
 import { CiYoutube } from "react-icons/ci";
 import { StoreContext } from "@/Context/ContextProvider";
+import { usePathname } from "next/navigation";
 const HeaderMenuMobile = () => {
   const { setOpenMenu, openMenu } = useContext(StoreContext);
+
+  const pathName = usePathname();
+
+  useEffect(() => {
+    setOpenMenu(false);
+  }, [pathName]);
+
   return (
     <>
       <div>
@@ -43,25 +51,27 @@ const HeaderMenuMobile = () => {
             </div>
             <div className={style.cart_wishlist_signin}>
               <div className={style.cart}>
-                <ul>
-                  <li>
-                    <h2>Cart</h2>
-                    <div className={style.shoppingCart}>
-                      <HiOutlineShoppingBag />
-                      <h3>0</h3>
-                    </div>
-                  </li>
-                  <li>
-                    <h2>Wishlist</h2>
-                    <div className={style.shoppingCart}>
-                      <FaRegHeart />
-                      <h3>0</h3>
-                    </div>
-                  </li>
-                </ul>
+                {/* <div> */}
+                <Link href={"/cart"}>
+                  <h2>Cart</h2>
+                  <div className={style.shoppingCart}>
+                    <HiOutlineShoppingBag />
+                    <h3>0</h3>
+                  </div>
+                </Link>
+                <Link href={"/wishlist"}>
+                  <h2>Wishlist</h2>
+                  <div className={style.shoppingCart}>
+                    <FaRegHeart />
+                    <h3>0</h3>
+                  </div>
+                </Link>
+                {/* </div> */}
               </div>
               <div className={style.signIn}>
-                <button>Sign In</button>
+                <Link href={"/signup"}>
+                  <button>Sign In</button>
+                </Link>
               </div>
               <div className={style.schoil}>
                 <LuInstagram />

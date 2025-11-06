@@ -1,0 +1,11 @@
+.LoadingProductDetails {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lottie {
+  height: 500px;
+  width: 100%;
+}

@@ -1,5 +1,8 @@
 import React from "react";
 import style from "./LoaddingCategories.module.css";
+import loader from "../../../public/animation/loader.json";
+import card from "../../../public/animation/cardLoading.json";
+import Lottie from "lottie-react";
 const LoaddingCategories = () => {
   return (
     <div className={style.LoaddingCategories}>
@@ -7,18 +10,12 @@ const LoaddingCategories = () => {
         <div className={` ${style.CategorieContainer}`}>
           <div className={style.largRoom}>
             <div className={style.largImage}>
-              <div className={style.living}></div>
-              <div className={style.livinge}></div>
+              <Lottie className={style.loader} animationData={card} />
             </div>
           </div>
-          <div className={style.SmRoom}>
-            <div className={style.smImage}>
-              <div className={style.smLiving}></div>
-              <div className={style.smLivinge}></div>
-            </div>
-            <div className={style.smImage}>
-              <div className={style.smLivinge}></div>
-              <div className={style.smLiving}></div>
+          <div className={style.largRoom}>
+            <div className={style.largImage}>
+              <Lottie className={style.loader} animationData={card} />
             </div>
           </div>
         </div>
