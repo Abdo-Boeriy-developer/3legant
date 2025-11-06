@@ -12,6 +12,9 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(response.data);
   } catch (error) {
     console.log("error", error);
-    return error;
+    return NextResponse.json(
+      { message: "Failed to fetch product details", error: String(error) },
+      { status: 500 }
+    );
   }
 }
