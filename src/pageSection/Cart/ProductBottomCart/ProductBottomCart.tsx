@@ -8,7 +8,6 @@ import { CartStore } from "@/Context/CartContext";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
 import axios from "axios";
-
 import Image from "next/image";
 import LoadingProductBottomCart from "./LoadingProductBottomCart/LoadingProductBottomCart";
 interface ProductType {
@@ -17,10 +16,10 @@ interface ProductType {
 }
 
 const ProductBottomCart = () => {
-  const { cartData, loading } = useContext(CartStore);
+  const { cartData, loading, getCartDataApi } = useContext(CartStore);
+  const token = Cookies.get("authorization");
 
   const updateItemcart = async ({ productId, quantity }: ProductType) => {
-    const token = Cookies.get("authorization");
     try {
       const response = await axios.post(
         `https://3legent-backend.vercel.app/api/v1/cart`,
@@ -42,6 +41,28 @@ const ProductBottomCart = () => {
     }
   };
 
+  const removeItemCart = async (productId: string) => {
+    try {
+      const response = await axios.delete(
+        `https://3legent-backend.vercel.app/api/v1/cart`,
+        {
+          headers: {
+            Authorization: `Bearer ${token} `,
+          },
+          data: { productId },
+        }
+      );
+
+      if (response.data.status === "success") {
+        toast.success(response.data.message);
+        await getCartDataApi();
+      }
+      console.log(response.data);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+    }
+  };
+
   return (
     <>
       {loading ? (
@@ -59,12 +80,22 @@ const ProductBottomCart = () => {
                   <div className={style.textImageProduct}>
                     <h2>{pro.product.title}</h2>
                     <p>Color : {pro.product.versions[0].title}</p>
-                    <button className={style.remove}>
+                    <button
+                      className={style.remove}
+                      onClick={() => removeItemCart(pro.product._id)}
+                    >
                       <FiDelete />
                       Remove
                     </button>
                     <div className={style.quantity}>
-                      <button>
+                      <button
+                        onClick={() =>
+                          updateItemcart({
+                            productId: pro.product._id,
+                            quantity: pro.quantity - 1,
+                          })
+                        }
+                      >
                         <TiMinus />
                       </button>
                       <h2>{pro.quantity}</h2>
@@ -83,11 +114,25 @@ const ProductBottomCart = () => {
                 </div>
                 <div className={style.price_quantity_total}>
                   <div className={style.quantity}>
-                    <button>
+                    <button
+                      onClick={() =>
+                        updateItemcart({
+                          productId: pro.product._id,
+                          quantity: pro.quantity - 1,
+                        })
+                      }
+                    >
                       <TiMinus />
                     </button>
                     <h2>{pro.quantity}</h2>
-                    <button>
+                    <button
+                      onClick={() =>
+                        updateItemcart({
+                          productId: pro.product._id,
+                          quantity: pro.quantity + 1,
+                        })
+                      }
+                    >
                       <FiPlus />
                     </button>
                   </div>
