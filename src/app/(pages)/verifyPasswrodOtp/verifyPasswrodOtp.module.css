@@ -147,3 +147,25 @@
     margin-bottom: 50px;
   }
 }
+
+/*  */
+.otp {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.otp input {
+  width: 50px !important;
+  height: 50px;
+  outline: 2px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.otp input:focus {
+  border: 1px solid #ccc;
+}

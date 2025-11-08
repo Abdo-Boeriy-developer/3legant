@@ -26,6 +26,7 @@ const page = () => {
   });
 
   const handleForgot = async (data: any) => {
+    localStorage.setItem("email", data.email);
     try {
       setLoading(true);
       const response = await axios.post(
@@ -35,12 +36,12 @@ const page = () => {
       console.log("response.data", response.data.status);
 
       if (response.data.status === "success") {
-        toast.success(response.data.message);
+        toast.success(response?.data?.message);
         router.push("/verifyPasswrodOtp");
       }
     } catch (error: any) {
-      toast.error(error.data.message);
-      console.log("Error", error.data.response.message);
+      toast.error(error?.response.data?.message);
+      console.log("Error", error);
     } finally {
       setLoading(false);
     }

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./verifyPasswrodOtp.module.css";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
@@ -8,27 +8,30 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { schema } from "@/schema/schemaVerifyPasswrod";
+import OTPInput from "react-otp-input";
 
 const page = () => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
+  const [otp, setOtp] = useState("");
 
-  const {
-    handleSubmit,
-    register,
-    formState: { errors },
-  } = useForm({
+  const { handleSubmit, setValue } = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
-      email: "",
       otp: "",
     },
   });
 
+  useEffect(() => {
+    setValue("otp", otp);
+  }, [otp, setValue]);
+
+  const email = localStorage.getItem("email");
   const handleOtp = async (data: any) => {
+    console.log(data);
     const payload = {
-      otp: data.otp.trim(),
-      email: data.email.trim(),
+      email: email?.trim(),
+      otp: data?.otp,
     };
     console.log(payload);
     try {
@@ -61,25 +64,20 @@ const page = () => {
           <form onSubmit={handleSubmit(handleOtp)}>
             <h2>Verify OTP</h2>
 
-            <div className={style.inputError}>
-              <input
-                type="text"
-                placeholder="Enter Your Email address"
-                {...register("email")}
-              />
-              {errors?.email?.message && <span>{errors?.email?.message}</span>}
-            </div>
-            <div className={style.inputError}>
-              <input
-                type="text"
-                placeholder="Enter Your OTP"
-                {...register("otp")}
-              />
-              {errors?.otp?.message && <span>{errors?.otp?.message}</span>}
-            </div>
+            <OTPInput
+              value={otp}
+              onChange={setOtp}
+              numInputs={4}
+              renderSeparator={<span></span>}
+              renderInput={(props) => (
+                <div className={style.otp}>
+                  <input {...props} />
+                </div>
+              )}
+            />
 
             <button className={style.buttonSignup} type="submit">
-              {loading ? "Loading..." : "Send"}
+              {loading ? "Loading..." : " Verify"}
             </button>
           </form>
         </div>

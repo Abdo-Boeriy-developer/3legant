@@ -20,7 +20,6 @@ const page = () => {
   } = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
-      email: "",
       newPassword: "",
       confirmNewPassword: "",
     },
@@ -33,8 +32,9 @@ const page = () => {
 
   const handleResetPasswrod = async (data: any) => {
     console.log("data", data);
+    const email = localStorage.getItem("email");
     const payload = {
-      email: data.email.trim(),
+      email: email?.trim(),
       newPassword: data.newPassword.trim(),
       confirmNewPassword: data.confirmNewPassword.trim(),
     };
@@ -68,18 +68,6 @@ const page = () => {
           <form onSubmit={handleSubmit(handleResetPasswrod)}>
             <h2>Reset Passwrod</h2>
 
-            <div className={style.passwrod}>
-              <div className={style.inputError}>
-                <input
-                  type="text"
-                  placeholder="Enter Your Email"
-                  {...register("email")}
-                />
-                {errors?.email?.message && (
-                  <span>{errors?.email?.message}</span>
-                )}
-              </div>
-            </div>
             <div className={style.passwrod}>
               <div className={style.inputError}>
                 <input
