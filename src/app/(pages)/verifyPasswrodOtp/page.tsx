@@ -13,8 +13,8 @@ import OTPInput from "react-otp-input";
 const page = () => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
-  const [otp, setOtp] = useState("");
-
+  const [otp, setOtp] = useState<string>("");
+  const [email, setEmail] = useState<string | null>(null);
   const { handleSubmit, setValue } = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -26,14 +26,16 @@ const page = () => {
     setValue("otp", otp);
   }, [otp, setValue]);
 
-  const email = localStorage.getItem("email");
+  useEffect(() => {
+    const storedEmail = localStorage.getItem("email");
+    setEmail(storedEmail);
+  }, []);
+
   const handleOtp = async (data: any) => {
-    console.log(data);
     const payload = {
-      email: email?.trim(),
+      email: email,
       otp: data?.otp,
     };
-    console.log(payload);
     try {
       setLoading(true);
       const response = await axios.post(

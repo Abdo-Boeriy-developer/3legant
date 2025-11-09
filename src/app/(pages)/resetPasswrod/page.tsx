@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./resetPasswrod.module.css";
 import Image from "next/image";
 import { IoEye } from "react-icons/io5";
@@ -28,11 +28,14 @@ const page = () => {
   const [visaplePassword, setVisaplePassword] = useState(false);
   const [visapleConfirmPassword, setVisapleConfirmPassword] = useState(false);
   const [loading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState<string | null>(null);
   const router = useRouter();
-
+  useEffect(() => {
+    const email = localStorage.getItem("email");
+    setEmail(email);
+  }, []);
   const handleResetPasswrod = async (data: any) => {
     console.log("data", data);
-    const email = localStorage.getItem("email");
     const payload = {
       email: email?.trim(),
       newPassword: data.newPassword.trim(),
