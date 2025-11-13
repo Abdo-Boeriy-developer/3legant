@@ -2,6 +2,7 @@ import React from "react";
 import style from "./articles.module.css";
 import Link from "next/link";
 import { HiOutlineArrowRight } from "react-icons/hi";
+import Image from "next/image";
 const Articles = () => {
   return (
     <div className={style.articles}>
@@ -15,7 +16,13 @@ const Articles = () => {
         </div>
         <div className={style.articlesBox}>
           <div className={style.box}>
-            <img src="/article1.jpg" alt="" />
+            <Image
+              src="/article1.jpg"
+              alt=""
+              width={500}
+              height={500}
+              loading="lazy"
+            />
             <h2>7 ways to decor your home</h2>
             <Link href={""}>
               Read More
@@ -23,7 +30,13 @@ const Articles = () => {
             </Link>
           </div>
           <div className={style.box}>
-            <img src="/article2.jpg" alt="" />
+            <Image
+              src="/article2.jpg"
+              alt=""
+              width={500}
+              height={500}
+              loading="lazy"
+            />
             <h2>Kitchen organization</h2>
             <Link href={""}>
               Read More
@@ -31,7 +44,13 @@ const Articles = () => {
             </Link>
           </div>
           <div className={style.box}>
-            <img src="/article3.jpg" alt="" />
+            <Image
+              src="/article3.jpg"
+              alt=""
+              width={500}
+              height={500}
+              loading="lazy"
+            />
             <h2>Decor your bedroom</h2>
             <Link href={""}>
               Read More

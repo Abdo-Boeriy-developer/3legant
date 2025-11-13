@@ -75,7 +75,12 @@ const ProductBottomCart = () => {
               <div key={pro.product._id} className={style.productBottom}>
                 <div className={style.iamgeProduct}>
                   <div className={style.img}>
-                    <img src={pro.product.images[0]} alt="" />
+                    <Image
+                      src={pro.product.images[0]}
+                      alt=""
+                      width={100}
+                      height={100}
+                    />
                   </div>
                   <div className={style.textImageProduct}>
                     <h2>{pro.product.title}</h2>

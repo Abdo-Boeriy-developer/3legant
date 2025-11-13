@@ -17,6 +17,7 @@ import AddToWishlist from "@/Services/AddToWishlist/AddToWishlist";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 interface Product {
   title: string;
   description: string;
@@ -176,7 +177,12 @@ const ProductsShop = () => {
                       >
                         <div className={style.image}>
                           <Link href={`/productDetails/${product._id}`}>
-                            <img src={product.images[0]} alt={product.title} />
+                            <Image
+                              src={product.images[0]}
+                              alt={product.title}
+                              width={500}
+                              height={500}
+                            />
                           </Link>
                           <div className={style.new}>
                             <h2>NEW</h2>

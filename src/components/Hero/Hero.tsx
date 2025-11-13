@@ -14,7 +14,7 @@ import {
   Autoplay,
 } from "swiper/modules";
 import HeroLoading from "./HeroLoading";
-import toast from "react-hot-toast";
+import Image from "next/image";
 
 const Hero = () => {
   const [heroData, setHeroData] = useState<string[] | null>(null);
@@ -59,7 +59,7 @@ const Hero = () => {
         >
           {heroData?.map((img, index) => (
             <SwiperSlide className={style.swiperSlide} key={index}>
-              <img src={img} alt="" />
+              <Image src={img} alt="" fill sizes="100vw" />
             </SwiperSlide>
           ))}
         </Swiper>

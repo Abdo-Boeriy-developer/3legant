@@ -8,7 +8,7 @@ const Coupon = () => {
       <p>Add your code for an instant cart dicount</p>
       <div className={style.input}>
         <LuTicketPercent />
-        <input type="text" placeholder="Coupon Code" />
+        <input type="text" placeholder="Coupon Code" name="coupon" />
         <button>Apply</button>
       </div>
     </div>

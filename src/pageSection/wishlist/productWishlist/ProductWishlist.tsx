@@ -43,8 +43,6 @@ const ProductWishlist = () => {
     }
   };
 
-
-
   return (
     <>
       {loading ? (
@@ -76,7 +74,12 @@ const ProductWishlist = () => {
                     </div>
                     <div className={style.image_title}>
                       <div className={style.imageProduct}>
-                        <img src={item.images[0]} alt="" />
+                        <Image
+                          src={item.images[0]}
+                          alt=""
+                          width={100}
+                          height={100}
+                        />
                       </div>
                       <div className={style.title}>
                         <h2>{item.title}</h2>

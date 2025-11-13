@@ -5,6 +5,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { categorieType } from "@/Types/categoriyType";
 import LoaddingCategories from "./LoaddingCategories";
 import Link from "next/link";
+import Image from "next/image";
 
 const Categories = () => {
   const [categoriy, setCategoriy] = useState<categorieType[]>([]);
@@ -33,7 +34,7 @@ const Categories = () => {
         <div className={` ${style.CategorieContainer}`}>
           <div className={style.largRoom}>
             <div className={style.largImage}>
-              <img src={categoriy[0]?.image} alt="" />
+              <Image src={categoriy[0]?.image} fill alt="" />
               <div className={style.living}>
                 <h3>{categoriy[0]?.name}</h3>
                 {/* <Link href={`${categoriy[0]._id}`}> */}
@@ -46,7 +47,7 @@ const Categories = () => {
           </div>
           <div className={style.SmRoom}>
             <div className={style.smImage}>
-              <img src={categoriy[1]?.image} alt="" />
+              <Image src={categoriy[1]?.image} fill alt="" />
               <div className={style.smLiving}>
                 <h3>{categoriy[1]?.name}</h3>
                 <Link href="">
@@ -56,7 +57,7 @@ const Categories = () => {
               </div>
             </div>
             <div className={style.smImage}>
-              <img src={categoriy[2]?.image} alt="" />
+              <Image src={categoriy[2]?.image} fill alt="" />
               <div className={style.smLiving}>
                 <h3>{categoriy[2]?.name}</h3>
                 <Link href="">

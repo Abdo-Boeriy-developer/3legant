@@ -25,6 +25,7 @@ import { CartStore } from "@/Context/CartContext";
 import LoadingArrivalProduct from "./loadingArrivalProduct/loadingArrivalProduct";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 const NewArrivalsProducts = () => {
   const route = useRouter();
   const [products, setProducts] = useState<ArrivalsProduct[]>([]);
@@ -66,9 +67,6 @@ const NewArrivalsProducts = () => {
       );
     }
   };
-  // const handleAddToCart = async () => {
-  //   await getCartDataApi();
-  // };
   return (
     <>
       <div className={style.newArrivalsProducts}>
@@ -132,7 +130,13 @@ const NewArrivalsProducts = () => {
                           </div>
                           <div className={style.image}>
                             <Link href={`/productDetails/${pro._id}`}>
-                              <img src={pro.images[0]} alt="" />
+                              <Image
+                                src={pro.images[0]}
+                                alt=""
+                                width={500}
+                                height={500}
+                                loading="lazy"
+                              />
                             </Link>
                             <div
                               className={`${style.addtocart} ${
@@ -141,16 +145,6 @@ const NewArrivalsProducts = () => {
                             >
                               <AddToCartAction productId={pro._id} />
                             </div>
-                            {/* 
-                        {isInCart ? (
-                          <div className={style.add}>
-                            Add To Cart <RiShoppingCart2Line />{" "}
-                          </div>
-                        ) : (
-                          <div className={style.addtocart}>
-                            <AddToCartAction productId={pro._id} />
-                          </div>
-                        )} */}
                           </div>
                         </div>
                       </div>

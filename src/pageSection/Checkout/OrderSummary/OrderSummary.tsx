@@ -4,6 +4,7 @@ import { FiPlus } from "react-icons/fi";
 import { FiMinus } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
 import { LuTicketPercent } from "react-icons/lu";
+import Image from "next/image";
 const OrderSummary = () => {
   return (
     <div className={style.orderSummary}>
@@ -13,7 +14,12 @@ const OrderSummary = () => {
         <div className={style.orderProduct}>
           <div className={style.image_title}>
             <div className={style.productImage}>
-              <img src="/product2-removebg-preview.png" alt="" />
+              <Image
+                src="/product2-removebg-preview.png"
+                width={100}
+                height={100}
+                alt=""
+              />
             </div>
             <div className={style.title_quantity}>
               <h3>Tray Table</h3>
@@ -39,7 +45,12 @@ const OrderSummary = () => {
         <div className={style.orderProduct}>
           <div className={style.image_title}>
             <div className={style.productImage}>
-              <img src="/product2-removebg-preview.png" alt="" />
+              <Image
+                src="/product2-removebg-preview.png"
+                alt=""
+                width={100}
+                height={100}
+              />
             </div>
             <div className={style.title_quantity}>
               <h3>Tray Table</h3>
