@@ -9,7 +9,7 @@ const Articles = () => {
       <div className="container">
         <div className={style.textTop}>
           <h2>Articles</h2>
-          <Link href={""}>
+          <Link href={"#"}>
             More Articles
             <HiOutlineArrowRight />
           </Link>
@@ -18,7 +18,7 @@ const Articles = () => {
           <div className={style.box}>
             <Image
               src="/article1.jpg"
-              alt=""
+              alt="Article1"
               width={500}
               height={500}
               loading="lazy"
@@ -32,13 +32,13 @@ const Articles = () => {
           <div className={style.box}>
             <Image
               src="/article2.jpg"
-              alt=""
+              alt="Article2"
               width={500}
               height={500}
               loading="lazy"
             />
             <h2>Kitchen organization</h2>
-            <Link href={""}>
+            <Link href={"#"}>
               Read More
               <HiOutlineArrowRight />
             </Link>
@@ -46,13 +46,13 @@ const Articles = () => {
           <div className={style.box}>
             <Image
               src="/article3.jpg"
-              alt=""
+              alt="Article3"
               width={500}
               height={500}
               loading="lazy"
             />
             <h2>Decor your bedroom</h2>
-            <Link href={""}>
+            <Link href={"#"}>
               Read More
               <HiOutlineArrowRight />
             </Link>

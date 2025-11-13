@@ -59,7 +59,7 @@ const Hero = () => {
         >
           {heroData?.map((img, index) => (
             <SwiperSlide className={style.swiperSlide} key={index}>
-              <Image src={img} alt="" fill sizes="100vw" />
+              <Image src={img} alt="Hero Image" fill sizes="100vw" />
             </SwiperSlide>
           ))}
         </Swiper>

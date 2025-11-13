@@ -68,7 +68,6 @@ const Offers = () => {
             <div className={style.limited_Time}>
               <LuTicketPercent />
               <h2>{newsBar}</h2>
-              {/* <Link href={""}>Shop Now</Link> */}
             </div>
             <div
               className={style.closeOffer}

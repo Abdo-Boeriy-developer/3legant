@@ -34,11 +34,11 @@ const Categories = () => {
         <div className={` ${style.CategorieContainer}`}>
           <div className={style.largRoom}>
             <div className={style.largImage}>
-              <Image src={categoriy[0]?.image} fill alt="" />
+              <Image src={categoriy[0]?.image} fill alt="categoriy" />
               <div className={style.living}>
                 <h3>{categoriy[0]?.name}</h3>
                 {/* <Link href={`${categoriy[0]._id}`}> */}
-                <Link href="">
+                <Link href="/shop">
                   Shop Now
                   <FaArrowRightLong />
                 </Link>
@@ -47,20 +47,20 @@ const Categories = () => {
           </div>
           <div className={style.SmRoom}>
             <div className={style.smImage}>
-              <Image src={categoriy[1]?.image} fill alt="" />
+              <Image src={categoriy[1]?.image} fill alt="categoriy" />
               <div className={style.smLiving}>
                 <h3>{categoriy[1]?.name}</h3>
-                <Link href="">
+                <Link href="/shop">
                   Shop Now
                   <FaArrowRightLong />
                 </Link>
               </div>
             </div>
             <div className={style.smImage}>
-              <Image src={categoriy[2]?.image} fill alt="" />
+              <Image src={categoriy[2]?.image} fill alt="categoriy" />
               <div className={style.smLiving}>
                 <h3>{categoriy[2]?.name}</h3>
-                <Link href="">
+                <Link href="/shop">
                   Shop Now
                   <FaArrowRightLong />
                 </Link>

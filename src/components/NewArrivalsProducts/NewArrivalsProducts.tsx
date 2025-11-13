@@ -132,7 +132,7 @@ const NewArrivalsProducts = () => {
                             <Link href={`/productDetails/${pro._id}`}>
                               <Image
                                 src={pro.images[0]}
-                                alt=""
+                                alt={pro.description}
                                 width={500}
                                 height={500}
                                 loading="lazy"
