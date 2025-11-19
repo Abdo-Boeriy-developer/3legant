@@ -77,6 +77,8 @@ interface ContextType {
   setIsWisthlistData: React.Dispatch<React.SetStateAction<WishlistType[]>>;
   getCartDataApi: () => Promise<void>;
   getWisthListAi: () => Promise<void>;
+  setIsOpenFlayCart: React.Dispatch<React.SetStateAction<boolean>>;
+  isOpenFlayCart: boolean;
 }
 
 export const CartStore = createContext<ContextType>({
@@ -87,13 +89,15 @@ export const CartStore = createContext<ContextType>({
   setIsWisthlistData: () => {},
   getCartDataApi: async () => {},
   getWisthListAi: async () => {},
+  setIsOpenFlayCart: () => {},
+  isOpenFlayCart: false,
 });
 
 const CartContext = ({ children }: children) => {
   const [cartData, setCartData] = useState<Root[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [isWishlistData, setIsWisthlistData] = useState<WishlistType[]>([]);
-
+  const [isOpenFlayCart, setIsOpenFlayCart] = useState<boolean>(false);
   const getCartDataApi = async () => {
     const token = Cookies.get("authorization");
     try {
@@ -152,6 +156,8 @@ const CartContext = ({ children }: children) => {
           setIsWisthlistData,
           getCartDataApi,
           getWisthListAi,
+          isOpenFlayCart,
+          setIsOpenFlayCart,
         }}
       >
         {children}

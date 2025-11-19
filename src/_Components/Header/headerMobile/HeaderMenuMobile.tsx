@@ -4,7 +4,7 @@ import style from "./HeaderMenuMobile.module.css";
 import { RiCloseLine } from "react-icons/ri";
 import { CiSearch } from "react-icons/ci";
 import Link from "next/link";
-import { headerLink } from "./headerLInks";
+import { headerLink } from "../headerLInks";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { FaRegHeart } from "react-icons/fa";
 import { LuInstagram } from "react-icons/lu";
@@ -12,14 +12,15 @@ import { SlSocialFacebook } from "react-icons/sl";
 import { CiYoutube } from "react-icons/ci";
 import { StoreContext } from "@/Context/ContextProvider";
 import { usePathname } from "next/navigation";
+import { CartStore } from "@/Context/CartContext";
 const HeaderMenuMobile = () => {
   const { setOpenMenu, openMenu } = useContext(StoreContext);
-
+  const { isOpenFlayCart, setIsOpenFlayCart } = useContext(CartStore);
   const pathName = usePathname();
 
   useEffect(() => {
     setOpenMenu(false);
-  }, [pathName]);
+  }, [pathName, isOpenFlayCart]);
 
   return (
     <>
@@ -52,7 +53,7 @@ const HeaderMenuMobile = () => {
             <div className={style.cart_wishlist_signin}>
               <div className={style.cart}>
                 {/* <div> */}
-                <Link href={"/cart"}>
+                <Link href={""} onClick={() => setIsOpenFlayCart(true)}>
                   <h2>Cart</h2>
                   <div className={style.shoppingCart}>
                     <HiOutlineShoppingBag />

@@ -1,7 +1,7 @@
 "use client";
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import style from "./header.module.css";
-import { headerLink } from "./headerLInks";
+import { headerLink } from "../headerLInks";
 import Link from "next/link";
 // import icons from react icons
 import { CiSearch } from "react-icons/ci";
@@ -11,17 +11,19 @@ import { MdLogin } from "react-icons/md";
 import { CgMenu } from "react-icons/cg";
 // import hook
 import { usePathname } from "next/navigation";
-import HeaderMenuMobile from "./HeaderMenuMobile";
+import HeaderMenuMobile from "../headerMobile/HeaderMenuMobile";
 import { StoreContext } from "@/Context/ContextProvider";
 import { CartStore } from "@/Context/CartContext";
 import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 const Header = () => {
   const pathName = usePathname();
   const { setOpenMenu } = useContext(StoreContext);
-  const { cartData, getCartDataApi } = useContext(CartStore);
+  const { cartData, getCartDataApi, setIsOpenFlayCart, isOpenFlayCart } =
+    useContext(CartStore);
   const totalQuantity = cartData.reduce((acc, item) => acc + item.quantity, 0);
-
   const [isVisable, setIsVisaple] = useState(false);
+
   useMemo(() => {
     if (
       pathName === "/signup" ||
@@ -92,8 +94,17 @@ const Header = () => {
               <Link href={"/myAccount"}>
                 <HiOutlineUserCircle className={style.noneResponsive} />
               </Link>
-              <Link href={"/cart"}>
-                <HiOutlineShoppingBag className={style.noneResponsive} />
+              <Link
+                href={""}
+                onClick={() => {
+                  if (pathName === "/cart") {
+                    toast.error("You are already on  the cart page!");
+                  } else {
+                    setIsOpenFlayCart(true);
+                  }
+                }}
+              >
+                <HiOutlineShoppingBag className={`${style.noneResponsive} `} />
               </Link>
               <h2>{totalQuantity}</h2>
             </div>
