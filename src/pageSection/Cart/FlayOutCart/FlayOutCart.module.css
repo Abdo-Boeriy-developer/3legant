@@ -11,6 +11,7 @@
   transition: 0.5s;
   transition-duration: 0.8s;
   overflow: hidden;
+  
 }
 .flayout.active {
   left: 0;
