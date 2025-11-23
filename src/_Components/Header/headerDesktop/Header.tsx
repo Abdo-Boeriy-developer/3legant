@@ -39,10 +39,10 @@ const Header = () => {
   }, [pathName]);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const chackCookes = Cookies.get("authorization");
 
   useEffect(() => {
     const checkToken = setInterval(() => {
-      const chackCookes = Cookies.get("authorization");
       setIsLoggedIn(!!chackCookes);
     }, 500);
     return () => clearInterval(checkToken);

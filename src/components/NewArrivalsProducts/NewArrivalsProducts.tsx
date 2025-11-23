@@ -83,8 +83,8 @@ const NewArrivalsProducts = () => {
             spaceBetween={30}
             slidesPerView={4}
             breakpoints={{
-              320: { slidesPerView: 2, spaceBetween: 10 }, // الموبايل
-              640: { slidesPerView: 2, spaceBetween: 15 }, // شاشات صغيرة
+              320: { slidesPerView: 1, spaceBetween: 10 }, // الموبايل
+              640: { slidesPerView: 1, spaceBetween: 15 }, // شاشات صغيرة
               1024: { slidesPerView: 3, spaceBetween: 20 }, // التابلت أو لابتوب صغير
               1280: { slidesPerView: 4, spaceBetween: 30 }, // الشاشات الكبيرة
             }}

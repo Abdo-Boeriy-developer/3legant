@@ -10,6 +10,7 @@
   z-index: 999;
   transition: 0.5s;
   min-width: 400px;
+  overflow:hidden
   /* width: 100%; */
 }
 

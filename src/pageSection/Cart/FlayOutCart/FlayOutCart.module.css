@@ -10,6 +10,7 @@
   z-index: 10000;
   transition: 0.5s;
   transition-duration: 0.8s;
+  overflow: hidden;
 }
 .flayout.active {
   left: 0;
@@ -28,6 +29,7 @@
   justify-content: space-between;
   transition: 0.8s;
   transition-duration: 0.5s;
+  overflow-x: hidden;
 }
 
 @media (max-width: 950px) {
