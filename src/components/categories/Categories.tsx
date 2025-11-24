@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import style from "./categories.module.css";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { categorieType } from "@/Types/categoriyType";
-import LoaddingCategories from "./LoaddingCategories";
 import Link from "next/link";
 import Image from "next/image";
+import LoaddingCategories from "./loading/LoaddingCategories";
 
 const Categories = () => {
   const [categoriy, setCategoriy] = useState<categorieType[]>([]);
@@ -34,7 +34,12 @@ const Categories = () => {
         <div className={` ${style.CategorieContainer}`}>
           <div className={style.largRoom}>
             <div className={style.largImage}>
-              <Image src={categoriy[0]?.image} fill alt="categoriy" />
+              <Image
+                src={categoriy[0]?.image}
+                width={500}
+                height={500}
+                alt="categoriy"
+              />
               <div className={style.living}>
                 <h3>{categoriy[0]?.name}</h3>
                 {/* <Link href={`${categoriy[0]._id}`}> */}

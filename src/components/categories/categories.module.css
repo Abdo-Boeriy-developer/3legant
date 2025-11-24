@@ -9,7 +9,7 @@
   justify-content: space-between;
   align-items: center;
 }
-
+/* smRoom And LargRoom */
 .SmRoom,
 .largRoom {
   width: 49%;
@@ -27,6 +27,8 @@
   justify-content: center;
   align-items: center;
 }
+
+/* text largRoom */
 
 .living {
   position: absolute;
@@ -63,7 +65,7 @@
   color: blue;
 }
 
-/*  */
+/* SmRoom  */
 
 .SmRoom {
   display: flex;
@@ -83,9 +85,6 @@
 }
 
 .smImage img {
-  /* width: 548px;
-  height: 319px;
-  object-fit: contain; */
   width: 70%;
 }
 
@@ -138,17 +137,6 @@
     gap: 0.625rem;
   }
 
-  .SmRoom,
-  .largRoom {
-    width: 100%;
-  }
-
-  .smImage img {
-    width: 100%;
-    height: 319px;
-    object-fit: contain;
-  }
-
   .smLiving {
     position: absolute;
     bottom: 8%;
@@ -157,5 +145,33 @@
 
   .smLiving h3 {
     font-size: 25px;
+  }
+
+  /*  */
+
+  .SmRoom,
+  .largRoom {
+    width: 100%;
+    min-height: 319px;
+  }
+  .largImage {
+    justify-content: right;
+  }
+  .largImage img {
+    object-fit: contain;
+    width: 70%;
+  }
+
+  .living {
+    position: absolute;
+    height: 100%;
+    top: 220px;
+    left: 4%;
+  }
+
+  .largImage,
+  .smImage {
+    height: 319px;
+    width: 100%;
   }
 }

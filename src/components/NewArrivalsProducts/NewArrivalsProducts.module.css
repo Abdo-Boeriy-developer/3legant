@@ -81,7 +81,14 @@
 
 .new_whislist {
   display: flex;
+  gap: 15px;
   justify-content: space-between;
+  width: 100%;
+}
+
+.width_new {
+  display: flex;
+  gap: 15px;
 }
 .new_whislist .new {
   display: flex;
@@ -123,23 +130,45 @@
   cursor: pointer;
 }
 
+.new_whislist .view svg {
+  font-size: 30px;
+  cursor: pointer;
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #38cb89;
+  font-size: 22px;
+  display: flex;
+  padding: 6px;
+  height: 32px;
+  width: 32px;
+}
+
 .image {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  height: 150px;
+  height: auto;
+  object-fit: fill;
   overflow: hidden;
   margin: auto;
+  position: relative;
 }
-
+.new_whislist {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+}
 .addtocart {
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 80%;
-  bottom: 25%;
+  bottom: 0%;
   right: -100%;
   transition: 0.5s;
 }

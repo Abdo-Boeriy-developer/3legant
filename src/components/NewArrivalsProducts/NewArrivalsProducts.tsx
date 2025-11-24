@@ -26,6 +26,7 @@ import LoadingArrivalProduct from "./loadingArrivalProduct/loadingArrivalProduct
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { CiRead } from "react-icons/ci";
 const NewArrivalsProducts = () => {
   const route = useRouter();
   const [products, setProducts] = useState<ArrivalsProduct[]>([]);
@@ -84,7 +85,9 @@ const NewArrivalsProducts = () => {
             slidesPerView={4}
             breakpoints={{
               320: { slidesPerView: 1, spaceBetween: 10 }, // الموبايل
-              640: { slidesPerView: 1, spaceBetween: 15 }, // شاشات صغيرة
+              640: { slidesPerView: 2, spaceBetween: 15 }, // شاشات صغيرة
+              750: { slidesPerView: 2, spaceBetween: 15 }, // شاشات صغيرة
+              970: { slidesPerView: 2, spaceBetween: 15 }, // شاشات صغيرة
               1024: { slidesPerView: 3, spaceBetween: 20 }, // التابلت أو لابتوب صغير
               1280: { slidesPerView: 4, spaceBetween: 30 }, // الشاشات الكبيرة
             }}
@@ -113,31 +116,41 @@ const NewArrivalsProducts = () => {
                     <div className={style.slideBox}>
                       <div className={style.SlideCon}>
                         <div className={style.product}>
-                          <div className={style.new_whislist}>
-                            <div className={style.new}>
-                              <h2>New</h2>
-                              <h3>-50%</h3>
-                            </div>
-                            <div className={`  ${style.wishlist}`}>
-                              {isInWisthlist ? (
-                                <FaHeart className={style.inWisthlist} />
-                              ) : (
-                                <CiHeart
-                                  onClick={() => handleAddToWishlist(pro._id)}
-                                />
-                              )}
-                            </div>
-                          </div>
                           <div className={style.image}>
-                            <Link href={`/productDetails/${pro._id}`}>
-                              <Image
-                                src={pro.images[0]}
-                                alt={pro.description}
-                                width={500}
-                                height={500}
-                                loading="lazy"
-                              />
-                            </Link>
+                            <div className={style.new_whislist}>
+                              <div className={style.width_new}>
+                                <div className={style.new}>
+                                  <h2>New</h2>
+                                  <h3>-50%</h3>
+                                </div>
+                                <div className={`  ${style.wishlist}`}>
+                                  {isInWisthlist ? (
+                                    <FaHeart className={style.inWisthlist} />
+                                  ) : (
+                                    <CiHeart
+                                      onClick={() =>
+                                        handleAddToWishlist(pro._id)
+                                      }
+                                    />
+                                  )}
+                                </div>
+                              </div>
+                              <Link
+                                href={`/productDetails/${pro._id}`}
+                                className={style.view}
+                              >
+                                <CiRead />
+                              </Link>
+                            </div>
+                            {/* <Link href={`/productDetails/${pro._id}`}> */}
+                            <Image
+                              src={pro.images[0]}
+                              alt={pro.description}
+                              width={500}
+                              height={500}
+                              loading="lazy"
+                            />
+                            {/* </Link> */}
                             <div
                               className={`${style.addtocart} ${
                                 isInCart ? "cursor-no-drop" : ""
