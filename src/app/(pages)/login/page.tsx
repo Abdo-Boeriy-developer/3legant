@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import style from "./login.module.css";
 import Image from "next/image";
 import Cookies from "js-cookie";
@@ -13,10 +13,13 @@ import toast from "react-hot-toast";
 import { loginType } from "@/Types/loginType";
 import { useRouter } from "next/navigation";
 import { schemaLogin } from "@/schema/schemaLogin";
+import { StoreContext } from "@/Context/ContextProvider";
 // import { useRouter } from "next/router";
 
 const page = () => {
+  const { setIsLogin } = useContext(StoreContext);
   const [visaplePassword, setVisaplePassword] = useState(false);
+
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const {
@@ -45,6 +48,7 @@ const page = () => {
         Cookies.set("authorization", response.data.token, { expires: 7 });
         reset();
         toast.success("Signing in successfully! ");
+        setIsLogin(true);
         router.push("/");
       }
     } catch (error: any) {

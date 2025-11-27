@@ -18,7 +18,7 @@ import Cookies from "js-cookie";
 import toast from "react-hot-toast";
 const Header = () => {
   const pathName = usePathname();
-  const { setOpenMenu } = useContext(StoreContext);
+  const { setOpenMenu, isLogin, setIsLogin } = useContext(StoreContext);
   const { cartData, getCartDataApi, setIsOpenFlayCart, isOpenFlayCart } =
     useContext(CartStore);
   const totalQuantity = cartData.reduce((acc, item) => acc + item.quantity, 0);
@@ -38,19 +38,23 @@ const Header = () => {
     }
   }, [pathName]);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const chackCookes = Cookies.get("authorization");
-
-  useEffect(() => {
-    const checkToken = setInterval(() => {
-      setIsLoggedIn(!!chackCookes);
-    }, 500);
-    return () => clearInterval(checkToken);
-  }, []);
-
+  // useEffect(() => {
+  //   const checkToken = setInterval(() => {
+  //     setIsLoggedIn(!!chackCookes);
+  //   }, 500);
+  //   return () => clearInterval(checkToken);
+  // }, []);
   const handleLotout = () => {
-    setIsLoggedIn(true);
-    Cookies.remove("authorization");
+    // setIsLoggedIn(true);
+    // const checkToken = Cookies.remove("authorization");
+    if (chackCookes) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
   };
 
   return (
@@ -78,7 +82,7 @@ const Header = () => {
             </div>
             <div className={style.icons}>
               <CiSearch />
-              {isLoggedIn ? (
+              {isLogin ? (
                 <h1
                   className="cursor-pointer text-red-600"
                   onClick={() => handleLotout()}

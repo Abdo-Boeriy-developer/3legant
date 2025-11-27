@@ -11,6 +11,8 @@ interface children {
 interface StoreContextType {
   setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
   openMenu: boolean;
+  setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
+  isLogin: boolean;
   sortBy: string;
   setSortBy: React.Dispatch<React.SetStateAction<string>>;
   selectedCategory: string | null;
@@ -22,6 +24,8 @@ interface StoreContextType {
 export const StoreContext = createContext<StoreContextType>({
   openMenu: false,
   setOpenMenu: () => {},
+  isLogin: false,
+  setIsLogin: () => {},
   sortBy: "all",
   setSortBy: () => {},
   selectedCategory: null,
@@ -39,6 +43,7 @@ const ContextProvider = ({ children }: children) => {
   const [openMenu, setOpenMenu] = useState(false);
   const [sortBy, setSortBy] = useState<string>("all");
   const [selectedCategory, setSelectedCategory] = useState<null | string>(null);
+  const [isLogin, setIsLogin] = useState<boolean>(false);
   const [selectedPriceRange, setSelectedPriceRange] = useState<PriceRangeType>({
     label: "All Price",
     min: null,
@@ -79,6 +84,8 @@ const ContextProvider = ({ children }: children) => {
           setSelectedCategory,
           selectedPriceRange,
           setSelectedPriceRange,
+          setIsLogin,
+          isLogin,
         }}
       >
         {children}

@@ -66,6 +66,8 @@ const Hero = () => {
                 // height={500}
                 fill
                 sizes="100vw"
+                priority={index === 0} // هنا السر
+                quality={60}
               />
             </SwiperSlide>
           ))}

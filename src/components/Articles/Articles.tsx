@@ -22,6 +22,9 @@ const Articles = () => {
               width={500}
               height={500}
               loading="lazy"
+              sizes="(max-width: 768px) 100vw,
+         (max-width: 1200px) 50vw,
+         33vw"
             />
             <h2>7 ways to decor your home</h2>
             <Link href={""}>
@@ -36,6 +39,9 @@ const Articles = () => {
               width={500}
               height={500}
               loading="lazy"
+              sizes="(max-width: 768px) 100vw,
+         (max-width: 1200px) 50vw,
+         33vw"
             />
             <h2>Kitchen organization</h2>
             <Link href={"#"}>
@@ -50,6 +56,9 @@ const Articles = () => {
               width={500}
               height={500}
               loading="lazy"
+              sizes="(max-width: 768px) 100vw,
+         (max-width: 1200px) 50vw,
+         33vw"
             />
             <h2>Decor your bedroom</h2>
             <Link href={"#"}>
