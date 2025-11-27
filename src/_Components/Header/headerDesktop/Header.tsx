@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import style from "./header.module.css";
 import { headerLink } from "../headerLInks";
 import Link from "next/link";
@@ -95,9 +95,15 @@ const Header = () => {
                 </Link>
               )}
 
-              <Link href={"/myAccount"}>
-                <HiOutlineUserCircle className={style.noneResponsive} />
-              </Link>
+              {/* Check Token his MyAccount */}
+              {isLogin ? (
+                <Link href={"/myAccount"}>
+                  <HiOutlineUserCircle className={style.noneResponsive} />
+                </Link>
+              ) : (
+                ""
+              )}
+
               <Link
                 href={""}
                 onClick={() => {
