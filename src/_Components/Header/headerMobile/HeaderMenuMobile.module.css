@@ -1,6 +1,5 @@
 .headerMenu {
   position: fixed;
-  /* top: -60%; */
   top: 0;
   left: -400px;
   background-color: #ffffff;
@@ -10,8 +9,7 @@
   z-index: 999;
   transition: 0.5s;
   min-width: 400px;
-  overflow:hidden
-  /* width: 100%; */
+  overflow: hidden;
 }
 
 .headerMenu.active {
@@ -20,11 +18,11 @@
 
 /*  */
 .container {
+  height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-content: space-between;
   flex-direction: column;
-  height: 90%;
 }
 
 .logo {
@@ -138,12 +136,13 @@
 
 @media (max-width: 750px) {
   .headerMenu {
-    max-width: 400px;
+    min-width: 370px;
+    max-height: 100%;
   }
 }
 
 @media (max-width: 450px) {
   .headerMenu {
-    max-width: 350px;
+    min-width: 350px;
   }
 }
