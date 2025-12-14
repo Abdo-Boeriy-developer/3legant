@@ -14,7 +14,7 @@
     "clsx": "^2.1.1",
     "js-cookie": "^3.0.5",
     "lottie-react": "^2.4.1",
-    "next": "15.5.3",
+    "next": "^16.0.10",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-hook-form": "^7.65.0",
