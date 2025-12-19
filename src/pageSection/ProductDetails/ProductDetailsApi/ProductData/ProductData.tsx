@@ -18,7 +18,7 @@ const ProductData = ({ productid }: { productid: string }) => {
         `https://3legent-backend.vercel.app/api/v1/products/${productid}`
       );
 
-      console.log("respone", respone.data);
+      // console.log("respone", respone.data);
       setProductDetailsData(respone.data);
     } catch (error) {
       console.log("error", error);
@@ -29,7 +29,7 @@ const ProductData = ({ productid }: { productid: string }) => {
 
   useEffect(() => {
     getProductDetailsApi();
-    console.log("ProductDetailsData", ProductDetailsData);
+    // console.log("ProductDetailsData", ProductDetailsData);
   }, []);
 
   if (!ProductDetailsData) {

@@ -31,7 +31,7 @@ const ProductBottomCart = () => {
         }
       );
 
-      console.log("response", response.data);
+      // console.log("response", response.data);
 
       if (response.data === "success") {
         toast.success("Successifly");
@@ -57,7 +57,7 @@ const ProductBottomCart = () => {
         toast.success(response.data.message);
         await getCartDataApi();
       }
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error: any) {
       toast.error(error.response.data.message);
     }

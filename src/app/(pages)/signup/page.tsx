@@ -40,7 +40,7 @@ const page = () => {
         "https://3legent-backend.vercel.app/api/v1/auth/register",
         data
       );
-      console.log(response.data);
+      // console.log(response.data);
       if (response.data.message === "user registered successfully") {
         reset();
         toast.success("Account created successfully!");

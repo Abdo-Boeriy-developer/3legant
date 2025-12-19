@@ -42,7 +42,7 @@ const page = () => {
         `https://3legent-backend.vercel.app/api/v1/auth/forgot-password/verify-otp`,
         payload
       );
-      console.log("response", response.data);
+      // console.log("response", response.data);
       if (response.data.status === "success") {
         toast.success(response.data.message);
         router.push("/resetPasswrod");

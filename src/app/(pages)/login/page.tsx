@@ -42,7 +42,7 @@ const page = () => {
         "https://3legent-backend.vercel.app/api/v1/auth/login",
         data
       );
-      console.log("response", response);
+      // console.log("response", response);
 
       if (response.data.status === "success") {
         Cookies.set("authorization", response.data.token, { expires: 7 });

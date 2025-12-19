@@ -15,7 +15,7 @@ const ProductDataTitle = ({
   ProductDetailsData: DataProductType;
 }) => {
   const product = ProductDetailsData.data;
-  console.log("ProductDetailsData", ProductDetailsData);
+  // console.log("ProductDetailsData", ProductDetailsData);
 
   const {
     category,

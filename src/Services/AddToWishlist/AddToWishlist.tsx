@@ -16,7 +16,7 @@ const AddToWishlist = async (productId: any) => {
         },
       }
     );
-    console.log("response", response.data);
+    // console.log("response", response.data);
     if (response.data.status === "success") {
       toast.success("Product added to wishlist 🎉");
     }

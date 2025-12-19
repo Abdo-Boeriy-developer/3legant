@@ -18,7 +18,7 @@ const AddToCartAction = ({ productId }: { productId: string }) => {
       const response = await addToCart({ productId, quantity });
       if (response) {
         const data: ArrivalsProduct = await response.json();
-        console.log(data);
+        // console.log(data);
       } else {
         console.log("Response is undefined");
       }

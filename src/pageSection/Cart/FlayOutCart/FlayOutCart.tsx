@@ -36,7 +36,7 @@ const FlayOutCart = () => {
           data: { productId },
         }
       );
-      console.log("respone", response.data.message);
+      // console.log("respone", response.data.message);
       if (response.data.status === "success") {
         toast.success(response.data.message);
         await getCartDataApi();
