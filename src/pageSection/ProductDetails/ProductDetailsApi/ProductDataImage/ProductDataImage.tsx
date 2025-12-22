@@ -9,8 +9,7 @@ const ProductDataImage = ({
   ProductDetailsData: DataProductType;
 }) => {
   const [dataImage, setDataImage] = useState<string>("");
-  const product = ProductDetailsData.data;
-  const { images, thumbnail } = product;
+  const { images, thumbnail } = ProductDetailsData;
 
   useEffect(() => {
     if (images && images.length > 0) {
