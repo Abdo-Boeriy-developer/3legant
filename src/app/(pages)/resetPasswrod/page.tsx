@@ -53,7 +53,7 @@ const page = () => {
         router.push("/login");
       }
     } catch (error: any) {
-      console.log("error", error);
+      // console.log("error", error);
       toast.error(error.response.data.message);
     } finally {
       setIsLoading(false);

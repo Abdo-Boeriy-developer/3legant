@@ -33,7 +33,7 @@ const page = () => {
         `https://3legent-backend.vercel.app/api/v1/auth/forgot-password`,
         { email: data.email }
       );
-      console.log("response.data", response.data.status);
+      // console.log("response.data", response.data.status);
 
       if (response.data.status === "success") {
         toast.success(response?.data?.message);
@@ -41,7 +41,7 @@ const page = () => {
       }
     } catch (error: any) {
       toast.error(error?.response.data?.message);
-      console.log("Error", error);
+      // console.log("Error", error);
     } finally {
       setLoading(false);
     }

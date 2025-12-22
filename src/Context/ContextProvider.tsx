@@ -72,6 +72,11 @@ const ContextProvider = ({ children }: children) => {
     getCartApi();
   }, []);
 
+  useEffect(() => {
+    const token = Cookies.get("authorization");
+    setIsLogin(!!token);
+  }, []);
+
   return (
     <>
       <StoreContext.Provider

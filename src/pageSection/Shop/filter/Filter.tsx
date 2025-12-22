@@ -6,6 +6,7 @@ import { CiGrid2V } from "react-icons/ci";
 import { CiGrid2H } from "react-icons/ci";
 import { StoreContext } from "@/Context/ContextProvider";
 import axios from "axios";
+import { axiosInstans } from "@/utils/axios";
 
 interface CategoryType {
   _id: string;
@@ -31,11 +32,9 @@ const Filter = () => {
   useEffect(() => {
     const getCategories = async () => {
       try {
-        const data = await axios.get(
-          "https://3legent-backend.vercel.app/api/v1/categories"
-        );
-        if (Array.isArray(data?.data?.data?.categories)) {
-          setCategories(data?.data?.data?.categories);
+        const data = await axiosInstans("categories");
+        if (Array.isArray(data?.data?.data)) {
+          setCategories(data?.data?.data);
         }
       } catch (error) {
         console.error(" Error fetching categories:", error);

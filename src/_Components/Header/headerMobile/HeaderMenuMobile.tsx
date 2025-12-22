@@ -14,7 +14,7 @@ import { StoreContext } from "@/Context/ContextProvider";
 import { usePathname } from "next/navigation";
 import { CartStore } from "@/Context/CartContext";
 const HeaderMenuMobile = () => {
-  const { setOpenMenu, openMenu } = useContext(StoreContext);
+  const { setOpenMenu, openMenu, isLogin } = useContext(StoreContext);
   const { isOpenFlayCart, setIsOpenFlayCart } = useContext(CartStore);
   const pathName = usePathname();
 

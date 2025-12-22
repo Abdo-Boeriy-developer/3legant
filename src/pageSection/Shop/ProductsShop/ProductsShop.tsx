@@ -18,17 +18,12 @@ import toast from "react-hot-toast";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-interface Product {
-  title: string;
-  description: string;
-  price: number;
-  images: string[];
-  _id: string;
-  quantity: string;
-}
+import { DataProductType } from "@/Types/productDetailsType";
+
 const ProductsShop = () => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [product, setProduct] = useState<Product[]>([]);
+  const [product, setProduct] = useState<DataProductType[]>([]);
+  console.log("product", product);
   const { sortBy, setSortBy, selectedPriceRange, selectedCategory } =
     useContext(StoreContext);
   const { isWishlistData, getWisthListAi } = useContext(CartStore);
@@ -119,6 +114,10 @@ const ProductsShop = () => {
     }
   };
 
+  const getDicount = (price: number, discount: number) => {
+    return Math.round((price / discount) * 100);
+  };
+
   return (
     <>
       <div className={style.productShop}>
@@ -178,7 +177,7 @@ const ProductsShop = () => {
                         <div className={style.image}>
                           <Link href={`/productDetails/${product._id}`}>
                             <Image
-                              src={product.images[0]}
+                              src={product.thumbnail}
                               alt={product.title}
                               width={500}
                               height={500}
@@ -186,7 +185,11 @@ const ProductsShop = () => {
                           </Link>
                           <div className={style.new}>
                             <h2>NEW</h2>
-                            <h3>-50%</h3>
+                            {product.discount ? (
+                              <h3>
+                                -{getDicount(product.discount, product.price)}%
+                              </h3>
+                            ) : null}
                           </div>
                           <div className={style.wisthList}>
                             {isInWisthList ? (
@@ -211,8 +214,8 @@ const ProductsShop = () => {
                           </div>
                           <h2>{product.title}</h2>
                           <div className={style.price}>
-                            <h2>${product.price}</h2>
-                            <p>$400.00</p>
+                            <h2>${product.price - product.discount}</h2>
+                            {!!product.discount && <p>${product.price}</p>}
                           </div>
                         </div>
                       </div>

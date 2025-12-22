@@ -112,7 +112,7 @@ const CartContext = ({ children }: children) => {
       );
       setCartData(response.data.data.products);
     } catch (error) {
-      console.log("error", error);
+      // console.log("error", error);
     } finally {
       setLoading(false);
     }
@@ -136,7 +136,7 @@ const CartContext = ({ children }: children) => {
       );
       setIsWisthlistData(response.data.data);
     } catch (error) {
-      console.log("error", error);
+      // console.log("error", error);
     } finally {
       setLoading(false);
     }

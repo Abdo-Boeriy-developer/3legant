@@ -28,7 +28,7 @@ const Hero = () => {
           setHeroData(data.data);
         }
       } catch (error) {
-        console.error(`Error: ${error}`);
+        // console.error(`Error: ${error}`);
       } finally {
         setLoading(false);
       }

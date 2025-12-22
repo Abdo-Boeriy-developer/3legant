@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import style from "./header.module.css";
 import { headerLink } from "../headerLInks";
 import Link from "next/link";
@@ -38,23 +38,9 @@ const Header = () => {
     }
   }, [pathName]);
 
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const chackCookes = Cookies.get("authorization");
-  // useEffect(() => {
-  //   const checkToken = setInterval(() => {
-  //     setIsLoggedIn(!!chackCookes);
-  //   }, 500);
-  //   return () => clearInterval(checkToken);
-  // }, []);
   const handleLotout = () => {
-    // setIsLoggedIn(true);
-    // const checkToken = Cookies.remove("authorization");
-    if (chackCookes) {
-      setIsLogin(true);
-    } else {
-      setIsLogin(false);
-    }
+    setIsLogin(false);
+    Cookies.remove("authorization");
   };
 
   return (
@@ -116,7 +102,8 @@ const Header = () => {
               >
                 <HiOutlineShoppingBag className={`${style.noneResponsive} `} />
               </Link>
-              <h2>{totalQuantity}</h2>
+
+              {isLogin ? <h2>{totalQuantity}</h2> : ""}
             </div>
           </div>
           <HeaderMenuMobile />

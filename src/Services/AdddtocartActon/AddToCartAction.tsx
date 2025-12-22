@@ -32,6 +32,8 @@ const AddToCartAction = ({ productId }: { productId: string }) => {
 
   const handleAddCart = async () => {
     const token = Cookies.get("authorization");
+    console.log("token", token);
+
     if (token) {
       await addtocart();
       await getCartDataApi();

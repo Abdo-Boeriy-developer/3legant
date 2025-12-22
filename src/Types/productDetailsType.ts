@@ -1,7 +1,5 @@
+
 export interface DataProductType {
-  data: Data;
-}
-export interface Data {
   discount: number;
   _id: string;
   title: string;

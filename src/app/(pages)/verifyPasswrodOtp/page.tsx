@@ -48,7 +48,7 @@ const page = () => {
         router.push("/resetPasswrod");
       }
     } catch (error: any) {
-      console.log("error", error);
+      // console.log("error", error);
       toast.error(error.response.data.message);
     } finally {
       setLoading(false);

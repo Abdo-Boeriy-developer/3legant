@@ -21,7 +21,7 @@ const AddToWishlist = async (productId: any) => {
       toast.success("Product added to wishlist 🎉");
     }
   } catch (error) {
-    console.log("error", error);
+    // console.log("error", error);
   }
 
   return null;

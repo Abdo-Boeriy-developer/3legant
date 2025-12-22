@@ -68,6 +68,11 @@ const NewArrivalsProducts = () => {
       );
     }
   };
+
+  const getDicount = (price: number, discount: number) => {
+    return Math.round((price / discount) * 100);
+  };
+
   return (
     <>
       <div className={style.newArrivalsProducts}>
@@ -108,9 +113,11 @@ const NewArrivalsProducts = () => {
                 const isInWisthlist = isWishlistData.some(
                   (p) => p._id === pro._id
                 );
+
                 const isInCart = cartData.find(
                   (p) => p.product._id === pro._id
                 );
+
                 return (
                   <SwiperSlide className={style.slide}>
                     <div className={style.slideBox}>
@@ -121,7 +128,13 @@ const NewArrivalsProducts = () => {
                               <div className={style.width_new}>
                                 <div className={style.new}>
                                   <h2>New</h2>
-                                  <h3>-50%</h3>
+                                  {/* <h3>-50%</h3> */}
+
+                                  {pro.discount ? (
+                                    <h3>
+                                      -{getDicount(pro.discount, pro.price)}%
+                                    </h3>
+                                  ) : null}
                                 </div>
                                 <div className={`  ${style.wishlist}`}>
                                   {isInWisthlist ? (
@@ -171,8 +184,8 @@ const NewArrivalsProducts = () => {
                         </div>
                         <h2 className={style.title}>{pro.title}</h2>
                         <div className={style.price}>
-                          <h2>{pro.price}</h2>
-                          <p>$400.00</p>
+                          <h2>{pro.price - pro.discount}</h2>
+                          {!!pro.discount && <p>${pro.price}</p>}
                         </div>
                       </div>
                     </div>

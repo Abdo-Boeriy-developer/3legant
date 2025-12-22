@@ -4,6 +4,8 @@ export interface ArrivalsProduct {
   _id: string;
   title: string;
   price: number;
+  discount: number;
+
   description: string;
   thumbnail: string;
   category: string[];

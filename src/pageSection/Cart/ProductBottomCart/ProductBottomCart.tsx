@@ -37,7 +37,7 @@ const ProductBottomCart = () => {
         toast.success("Successifly");
       }
     } catch (error) {
-      console.log("error", error);
+      // console.log("error", error);
     }
   };
 
