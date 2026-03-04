@@ -1,10 +1,27 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./AccountDetailsInput.module.css";
-import Cookies from "js-cookie";
 import { axiosInstans } from "@/utils/axios";
-import axios from "axios";
+
+type userDataType = {
+  confirmPassword: string;
+  email: string;
+  fullName: string;
+  password: string;
+};
+
 const AccountDetailsInput = () => {
+  const [userData, setUserData] = useState<userDataType>();
+
+  useEffect(() => {
+    const data = localStorage.getItem("userData");
+    if (data) {
+      setUserData(JSON.parse(data));
+    }
+  }, []);
+
+  console.log(userData);
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -17,6 +34,13 @@ const AccountDetailsInput = () => {
     getData();
   }, []);
 
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setFormData({
+  //     ...formData,
+  //     [e.target.id]: e.target.value,
+  //   });
+  // };
+
   return (
     <div className={style.accountDetailsInput}>
       <h2>Account Details</h2>
@@ -26,7 +50,7 @@ const AccountDetailsInput = () => {
           type="text"
           placeholder="First name"
           id="firstName"
-          defaultValue={"Abdo Boeriy"}
+          defaultValue={userData?.fullName}
         />
       </div>
       {/* <div>
@@ -47,7 +71,7 @@ const AccountDetailsInput = () => {
           type="email"
           placeholder="Email"
           id="email"
-          defaultValue={"Admin@gmail.com"}
+          defaultValue={userData?.email}
         />
       </div>
     </div>

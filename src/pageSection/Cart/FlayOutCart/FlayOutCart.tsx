@@ -11,12 +11,13 @@ import { usePathname } from "next/navigation";
 import axios from "axios";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+import { axiosInstans } from "@/utils/axios";
 const FlayOutCart = () => {
   const { isOpenFlayCart, setIsOpenFlayCart, cartData, getCartDataApi } =
     useContext(CartStore);
   const totalPrice = cartData.reduce(
     (acc, item) => acc + item.product.price * item.quantity,
-    0
+    0,
   );
   const pathName = usePathname();
   useEffect(() => {
@@ -24,18 +25,13 @@ const FlayOutCart = () => {
   }, [pathName]);
 
   const removeItem = async (productId: string) => {
-    const token = Cookies.get("authorization");
     try {
-      const response = await axios.delete(
-        `https://3legent-backend.vercel.app/api/v1/cart`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          data: { productId },
-        }
-      );
+      const response = await axiosInstans.delete(`cart`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: { productId },
+      });
       // console.log("respone", response.data.message);
       if (response.data.status === "success") {
         toast.success(response.data.message);
@@ -60,7 +56,7 @@ const FlayOutCart = () => {
             <div className={style.items}>
               {cartData.length > 0 ? (
                 cartData.map((item) => (
-                  <div className={style.item}>
+                  <div className={style.item} key={item.product._id}>
                     <div className={style.images}>
                       <div className={style.img}>
                         <Image
@@ -71,8 +67,8 @@ const FlayOutCart = () => {
                         />
                       </div>
                       <div className={style.itemTitle}>
-                        <h3>{item.product.title}</h3>
-                        <p>Color : {item.product.versions[0].title}</p>
+                        <h3>{item?.product?.title}</h3>
+                        <p>Color : {item?.product?.versions[0]?.title}</p>
                         <div className={style.quantity}>
                           <button>
                             <FiMinus />

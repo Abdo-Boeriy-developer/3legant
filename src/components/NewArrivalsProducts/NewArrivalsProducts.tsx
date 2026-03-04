@@ -27,6 +27,8 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { CiRead } from "react-icons/ci";
+import axios from "axios";
+import { axiosInstans } from "@/utils/axios";
 const NewArrivalsProducts = () => {
   const route = useRouter();
   const [products, setProducts] = useState<ArrivalsProduct[]>([]);
@@ -37,9 +39,11 @@ const NewArrivalsProducts = () => {
     const newArrayProductApi = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/api/getArrayProduct");
-        const data = await response.json();
-        setProducts(data.data);
+        // const response = await fetch("/api/getArrayProduct");
+        // const data = await response.json();
+        const data = await axiosInstans("home/latest-products");
+        // console.log("data", data);
+        setProducts(data.data.data);
       } catch (error) {
         console.log("Error", error);
       } finally {
@@ -64,7 +68,7 @@ const NewArrivalsProducts = () => {
           >
             SingUP
           </button>
-        </div>
+        </div>,
       );
     }
   };
@@ -80,7 +84,7 @@ const NewArrivalsProducts = () => {
           <h2>
             New <br /> Arrivals
           </h2>
-          <Link href={""}>
+          <Link href={"/shop"}>
             More Products <FaArrowRightLong />{" "}
           </Link>
         </div>
@@ -110,12 +114,12 @@ const NewArrivalsProducts = () => {
               <LoadingArrivalProduct />
             ) : (
               products.map((pro) => {
-                const isInWisthlist = isWishlistData.some(
-                  (p) => p._id === pro._id
-                );
+                const isInWisthlist = Array.isArray(isWishlistData?.products)
+                  ? isWishlistData?.products.some((p) => p._id === pro._id)
+                  : "";
 
-                const isInCart = cartData.find(
-                  (p) => p.product._id === pro._id
+                const isInCart = cartData.some(
+                  (p) => p.product._id === pro._id,
                 );
 
                 return (

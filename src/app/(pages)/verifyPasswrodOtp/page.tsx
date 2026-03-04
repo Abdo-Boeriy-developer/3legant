@@ -4,11 +4,11 @@ import style from "./verifyPasswrodOtp.module.css";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { schema } from "@/schema/schemaVerifyPasswrod";
 import OTPInput from "react-otp-input";
+import { axiosInstans } from "@/utils/axios";
 
 const page = () => {
   const router = useRouter();
@@ -38,9 +38,9 @@ const page = () => {
     };
     try {
       setLoading(true);
-      const response = await axios.post(
-        `https://3legent-backend.vercel.app/api/v1/auth/forgot-password/verify-otp`,
-        payload
+      const response = await axiosInstans.post(
+        `auth/forgot-password/verify-otp`,
+        payload,
       );
       // console.log("response", response.data);
       if (response.data.status === "success") {

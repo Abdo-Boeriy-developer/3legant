@@ -8,12 +8,12 @@ import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { loginType } from "@/Types/loginType";
 import { useRouter } from "next/navigation";
 import { schemaLogin } from "@/schema/schemaLogin";
 import { StoreContext } from "@/Context/ContextProvider";
+import { axiosInstans } from "@/utils/axios";
 // import { useRouter } from "next/router";
 
 const page = () => {
@@ -38,13 +38,14 @@ const page = () => {
   const submitLogin = async (data: loginType) => {
     try {
       setLoading(true);
-      const response = await axios.post(
-        "https://3legent-backend.vercel.app/api/v1/auth/login",
-        data
-      );
-      // console.log("response", response);
+      const response = await axiosInstans.post("auth/login", data);
+      // console.log("response", response.data.data);
 
       if (response.data.status === "success") {
+        localStorage.setItem(
+          "currentUserId",
+          JSON.stringify(response.data.data),
+        );
         Cookies.set("authorization", response.data.token, { expires: 7 });
         reset();
         toast.success("Signing in successfully! ");

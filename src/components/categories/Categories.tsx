@@ -6,6 +6,7 @@ import { categorieType } from "@/Types/categoriyType";
 import Link from "next/link";
 import Image from "next/image";
 import LoaddingCategories from "./loading/LoaddingCategories";
+import { axiosInstans } from "@/utils/axios";
 
 const Categories = () => {
   const [categoriy, setCategoriy] = useState<categorieType[]>([]);
@@ -14,9 +15,10 @@ const Categories = () => {
   useEffect(() => {
     const GetCategories = async () => {
       try {
-        const response = await fetch("/api/getCategories");
-        const data = await response.json();
-        setCategoriy(data.data);
+        // const response = await fetch("/api/getCategories");
+        // const data = await response.json();
+        const data = await axiosInstans("categories");
+        setCategoriy(data.data.data);
       } catch (error) {
         console.log("error", error);
       } finally {

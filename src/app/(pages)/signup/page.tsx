@@ -12,6 +12,7 @@ import { signupType } from "@/Types/signupType";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { schema } from "@/schema/schemaSignIn";
+import { axiosInstans } from "@/utils/axios";
 
 const page = () => {
   const router = useRouter();
@@ -34,12 +35,11 @@ const page = () => {
   const [visapleConfirmPassword, setVisapleConfirmPassword] = useState(false);
   const [loading, setIsLoading] = useState(false);
   const submitSignup = async (data: signupType) => {
+    console.log("data", data);
+    localStorage.setItem("userData", JSON.stringify(data));
     try {
       setIsLoading(true);
-      const response = await axios.post(
-        "https://3legent-backend.vercel.app/api/v1/auth/register",
-        data
-      );
+      const response = await axiosInstans.post("auth/register", data);
       // console.log(response.data);
       if (response.data.message === "user registered successfully") {
         reset();

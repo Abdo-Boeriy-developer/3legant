@@ -5,11 +5,10 @@ import { TiMinus } from "react-icons/ti";
 import { VscClose } from "react-icons/vsc";
 import style from "./ProductBottomCart.module.css";
 import { CartStore } from "@/Context/CartContext";
-import Cookies from "js-cookie";
 import toast from "react-hot-toast";
-import axios from "axios";
 import Image from "next/image";
 import LoadingProductBottomCart from "./LoadingProductBottomCart/LoadingProductBottomCart";
+import { axiosInstans } from "@/utils/axios";
 interface ProductType {
   productId: string;
   quantity: number;
@@ -17,19 +16,10 @@ interface ProductType {
 
 const ProductBottomCart = () => {
   const { cartData, loading, getCartDataApi } = useContext(CartStore);
-  const token = Cookies.get("authorization");
 
   const updateItemcart = async ({ productId, quantity }: ProductType) => {
     try {
-      const response = await axios.post(
-        `https://3legent-backend.vercel.app/api/v1/cart`,
-        { productId, quantity },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axiosInstans.post(`cart`, { productId, quantity });
 
       // console.log("response", response.data);
 
@@ -43,15 +33,9 @@ const ProductBottomCart = () => {
 
   const removeItemCart = async (productId: string) => {
     try {
-      const response = await axios.delete(
-        `https://3legent-backend.vercel.app/api/v1/cart`,
-        {
-          headers: {
-            Authorization: `Bearer ${token} `,
-          },
-          data: { productId },
-        }
-      );
+      const response = await axiosInstans.delete(`cart`, {
+        data: { productId },
+      });
 
       if (response.data.status === "success") {
         toast.success(response.data.message);

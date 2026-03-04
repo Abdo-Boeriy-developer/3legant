@@ -18,7 +18,6 @@ const AddToCartAction = ({ productId }: { productId: string }) => {
       const response = await addToCart({ productId, quantity });
       if (response) {
         const data: ArrivalsProduct = await response.json();
-        // console.log(data);
       } else {
         console.log("Response is undefined");
       }
@@ -32,7 +31,7 @@ const AddToCartAction = ({ productId }: { productId: string }) => {
 
   const handleAddCart = async () => {
     const token = Cookies.get("authorization");
-    console.log("token", token);
+    // console.log("token", token);
 
     if (token) {
       await addtocart();
@@ -49,7 +48,7 @@ const AddToCartAction = ({ productId }: { productId: string }) => {
               SingUP
             </button>
           </div>
-        </>
+        </>,
       );
     }
   };

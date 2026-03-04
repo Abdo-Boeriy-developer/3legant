@@ -3,9 +3,6 @@ import style from "./ProductDataTitle.module.css";
 import { MdOutlineStar } from "react-icons/md";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import Image from "next/image";
-import { HiMiniMinusSmall } from "react-icons/hi2";
-import { BsPlus } from "react-icons/bs";
-import { CiHeart } from "react-icons/ci";
 import { DataProductType } from "@/Types/productDetailsType";
 import AddCartAddWisthlistQuantity from "./AddCartAddWisthlistQuantity";
 
@@ -14,7 +11,7 @@ const ProductDataTitle = ({
 }: {
   ProductDetailsData: DataProductType;
 }) => {
-  const product = ProductDetailsData.data;
+  const product = ProductDetailsData;
   // console.log("ProductDetailsData", ProductDetailsData);
 
   const {
@@ -27,6 +24,8 @@ const ProductDataTitle = ({
     title,
     versions,
   } = product;
+
+  // console.log(title);
 
   return (
     <div className={style.ProductDataTitle}>
@@ -78,12 +77,12 @@ const ProductDataTitle = ({
             <h2 className={style.chooseTitle}>
               Choose Color <MdOutlineArrowForwardIos />
             </h2>
-            <h2 className={style.color}>{versions[0].title}</h2>
+            <h2 className={style.color}>{versions[0]?.title}</h2>
 
             <div className={style.group_image}>
-              {versions[0].images.map((item) => (
+              {versions[0]?.images?.map((item: any) => (
                 <div className={`${style.image}`}>
-                  <Image src={item} alt="" width={70} height={71} />
+                  <Image src={item} alt={"title"} width={70} height={71} />
                 </div>
               ))}
             </div>

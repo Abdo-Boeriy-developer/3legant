@@ -14,12 +14,14 @@ const AddCartAddWisthlistQuantity = ({
 }: {
   ProductDetailsData: DataProductType;
 }) => {
-  const { isWishlistData, getWisthListAi, cartData } = useContext(CartStore);
-  const product = ProductDetailsData.data;
+  const { isWishlistData, getWisthListAi } = useContext(CartStore);
+  // console.log("isWishlistData", isWishlistData);
+  const product = ProductDetailsData;
   const { _id } = product;
 
-  const isInWisthList = isWishlistData.some((p) => p._id === _id);
-
+  const isInWisthList =
+    Array.isArray(isWishlistData?.products) &&
+    isWishlistData?.products.some((p) => p._id === _id);
   const handleAddWisthLIst = async (productId: string) => {
     await AddToWishlist(productId);
     await getWisthListAi();

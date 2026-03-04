@@ -1,6 +1,6 @@
 .WriteReviews {
   margin-top: 50px;
-  margin-bottom: 500px;
+  margin-bottom: 50px;
 }
 
 /* linkReview */
@@ -67,6 +67,7 @@
   display: flex;
   align-items: center;
   font-size: 12px;
+  color: gold;
 }
 
 /* input */
@@ -102,6 +103,28 @@
 
 /* review */
 
+.Retings {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.userReting {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.userReting span {
+  font-size: 25px;
+  color: #cbcccd;
+  cursor: pointer;
+}
+
+.userReting .rateFill {
+  color: gold;
+}
+
 .review {
   margin-top: 30px;
   display: flex;
@@ -133,12 +156,34 @@
 
 /* comment */
 
+.UserNameRetings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Edit {
+  display: flex;
+  align-items: center;
+  gap: 0.9375rem;
+}
+
+.Edit svg {
+  font-size: 20px;
+  cursor: pointer;
+}
+
 .comment {
   margin-top: 50px;
   display: flex;
   gap: 20px;
   position: relative;
 }
+
+.commentUser {
+  width: 100%;
+}
+
 .comment::after {
   position: absolute;
   content: "";
@@ -159,4 +204,43 @@
   line-height: 26px;
   color: #353945;
   margin-top: 10px;
+}
+
+/* LoadingTrash */
+
+.LoadingTrash {
+  transform: translateX(-50%);
+  animation: load 0.4s infinite;
+}
+
+@keyframes load {
+  from {
+    transform: rotate(100deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* loaddingComments */
+
+.loaddingComments {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+  /* background-color: red; */
+  height: 200px;
+}
+
+@media (max-width: 750px) {
+  .loaddingComments {
+    height: 200px;
+  }
+  .loaddingComments .lottie {
+    width: 60%;
+  }
 }

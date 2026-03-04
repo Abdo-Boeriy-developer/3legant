@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 import toast from "react-hot-toast";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import Image from "next/image";
+import { axiosInstans } from "@/utils/axios";
 const ProductWishlist = () => {
   const {
     isWishlistData,
@@ -18,37 +19,33 @@ const ProductWishlist = () => {
     getWisthListAi,
     cartData,
   } = useContext(CartStore);
-
+  // Delete the from item in wishlist
   const deleteItemWisthList = async (productId: string) => {
-    const token = Cookies.get("authorization");
-
     try {
-      const response = await axios.delete(
-        `https://3legent-backend.vercel.app/api/v1/wishlist`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          data: { productId },
-        }
-      );
+      const response = await axiosInstans.delete(`wishlist`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: { productId },
+      });
       setIsWisthlistData(response.data.data);
       if (response.data.status === "success") {
         toast.success("Item deleted from wishlist successfully");
-        await getWisthListAi;
+        await getWisthListAi();
       }
     } catch (error) {
       console.error(" Error ", error);
     }
   };
-
+  // console.log(isWishlistData);
   return (
     <>
       {loading ? (
         <LoadingWishtList />
-      ) : isWishlistData.length > 0 ? (
-        isWishlistData.map((item) => {
+      ) : isWishlistData?.products && isWishlistData.products.length > 0 ? (
+        isWishlistData?.products.map((item) => {
+          // console.log("item", item);
+
           const inIsCart = cartData.some((p) => p.product._id === item._id);
 
           return (
@@ -75,22 +72,22 @@ const ProductWishlist = () => {
                     <div className={style.image_title}>
                       <div className={style.imageProduct}>
                         <Image
-                          src={item.images[0]}
+                          src={item?.images[0]}
                           alt=""
                           width={100}
                           height={100}
                         />
                       </div>
                       <div className={style.title}>
-                        <h2>{item.title}</h2>
-                        <p>Color: {item.versions[0].title}</p>
-                        <p className={style._price}>$ ${item.price}</p>
+                        <h2>{item?.title}</h2>
+                        <p>Color: {item?.versions[0]?.title}</p>
+                        <p className={style?._price}>$ ${item?.price}</p>
                       </div>
                     </div>
                   </div>
                   <div className={style.price_addtocart}>
                     <div className={style.price}>
-                      <h2>$ {item.price}</h2>
+                      <h2>$ {item?.price}</h2>
                     </div>
                     <div className={style.addToCart}>
                       {inIsCart ? (

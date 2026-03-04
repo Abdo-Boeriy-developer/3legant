@@ -15,6 +15,7 @@ import {
 } from "swiper/modules";
 import HeroLoading from "./HeroLoading";
 import Image from "next/image";
+import { axiosInstans } from "@/utils/axios";
 
 const Hero = () => {
   const [heroData, setHeroData] = useState<string[] | null>(null);
@@ -22,10 +23,12 @@ const Hero = () => {
   useEffect(() => {
     const HeroApi = async () => {
       try {
-        const respones = await fetch("/api/heroSection");
-        const data = await respones.json();
+        // const respones = await fetch("/api/heroSection");
+        // const data = await respones.json();
+        // console.log("Hero", data.data.data);
+        const data = await axiosInstans("home/hero-section");
         if (data) {
-          setHeroData(data.data);
+          setHeroData(data.data.data);
         }
       } catch (error) {
         // console.error(`Error: ${error}`);
@@ -57,20 +60,21 @@ const Hero = () => {
           modules={[Navigation, Pagination, Mousewheel, Keyboard, Autoplay]}
           className={`mySwiper ${style.swiper}`}
         >
-          {heroData?.map((img, index) => (
-            <SwiperSlide className={style.swiperSlide} key={index}>
-              <Image
-                src={img}
-                alt="Hero Image"
-                // width={500}
-                // height={500}
-                fill
-                sizes="100vw"
-                priority={index === 0} // هنا السر
-                quality={60}
-              />
-            </SwiperSlide>
-          ))}
+          {heroData &&
+            heroData?.map((img, index) => (
+              <SwiperSlide className={style.swiperSlide} key={index}>
+                <Image
+                  src={img}
+                  alt="Hero Image"
+                  // width={500}
+                  // height={500}
+                  fill
+                  sizes="100vw"
+                  priority={index === 0} // هنا السر
+                  quality={60}
+                />
+              </SwiperSlide>
+            ))}
         </Swiper>
       )}
     </>

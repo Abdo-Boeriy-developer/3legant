@@ -5,12 +5,11 @@ import Image from "next/image";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
 import { useRouter } from "next/navigation";
-import z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "@/schema/schemaResetPasswrod";
-import axios from "axios";
 import toast from "react-hot-toast";
+import { axiosInstans } from "@/utils/axios";
 
 const page = () => {
   const {
@@ -43,10 +42,7 @@ const page = () => {
     };
     try {
       setIsLoading(true);
-      const response = await axios.put(
-        `https://3legent-backend.vercel.app/api/v1/auth/reset-password`,
-        payload
-      );
+      const response = await axiosInstans.put(`auth/reset-password`, payload);
       // console.log("response", response.data);
       if (response.data.status === "success") {
         toast.success(response.data.message);

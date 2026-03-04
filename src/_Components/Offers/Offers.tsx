@@ -67,7 +67,7 @@ const Offers = () => {
             <div className={style.noneMedia}></div>
             <div className={style.limited_Time}>
               <LuTicketPercent />
-              <h2>{newsBar}</h2>
+              {/* <h2>{newsBar}</h2> */}
             </div>
             <div
               className={style.closeOffer}

@@ -1,14 +1,13 @@
 "use client";
 import Image from "next/image";
-import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import style from "./forget.module.css";
 import { useState } from "react";
 import { schema } from "@/schema/schemaForgot";
+import { axiosInstans } from "@/utils/axios";
 
 const page = () => {
   const router = useRouter();
@@ -29,10 +28,9 @@ const page = () => {
     localStorage.setItem("email", data.email);
     try {
       setLoading(true);
-      const response = await axios.post(
-        `https://3legent-backend.vercel.app/api/v1/auth/forgot-password`,
-        { email: data.email }
-      );
+      const response = await axiosInstans.post(`auth/forgot-password`, {
+        email: data.email,
+      });
       // console.log("response.data", response.data.status);
 
       if (response.data.status === "success") {

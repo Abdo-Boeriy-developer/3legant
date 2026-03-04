@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { PriceRangeType } from "@/Types/priceRangeInput";
+import { axiosInstans } from "@/utils/axios";
 
 interface children {
   children: React.ReactNode;
@@ -52,17 +53,8 @@ const ContextProvider = ({ children }: children) => {
   });
 
   const getCartApi = async () => {
-    const token = Cookies.get("authorization");
-
     try {
-      const response = await axios.get(
-        `https://3legent-backend.vercel.app/api/v1/cart`,
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axiosInstans(`cart`);
       return response.data;
     } catch (error) {
       console.log("Error", error);

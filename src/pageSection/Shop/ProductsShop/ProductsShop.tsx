@@ -23,10 +23,10 @@ import { DataProductType } from "@/Types/productDetailsType";
 const ProductsShop = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [product, setProduct] = useState<DataProductType[]>([]);
-  console.log("product", product);
   const { sortBy, setSortBy, selectedPriceRange, selectedCategory } =
     useContext(StoreContext);
   const { isWishlistData, getWisthListAi } = useContext(CartStore);
+  console.log("isWishlistData", isWishlistData);
   const route = useRouter();
 
   const getProductShop = async () => {
@@ -65,12 +65,12 @@ const ProductsShop = () => {
             break;
           case baseUrl.includes("?"):
             return `${baseUrl}&category=${encodeURIComponent(
-              selectedCategory
+              selectedCategory,
             )}`;
             break;
           case selectedCategory !== null:
             return `${baseUrl}?category=${encodeURIComponent(
-              selectedCategory
+              selectedCategory,
             )}`;
           default: {
             return baseUrl;
@@ -109,7 +109,7 @@ const ProductsShop = () => {
           >
             SingUP
           </button>
-        </div>
+        </div>,
       );
     }
   };
@@ -158,27 +158,27 @@ const ProductsShop = () => {
           <>
             <div className={clsx(style.sortProduct)}>
               {product?.length > 0 ? (
-                product?.map((product, index) => {
-                  const isInWisthList = isWishlistData.some(
-                    (p) => p._id === product._id
-                  );
-
+                product?.map((product) => {
+                  const isInWisthList =
+                    Array.isArray(isWishlistData?.products) &&
+                    isWishlistData?.products.some((p) => p._id === product._id);
+                  console.log(isInWisthList);
                   return (
                     <>
                       <div
-                        key={product._id || index}
+                        key={product._id}
                         className={clsx(
                           style.product,
                           sortBy === "all" ? style.product : "",
                           sortBy === "tow" ? style.tow : "",
-                          sortBy === "one" ? style.one : ""
+                          sortBy === "one" ? style.one : "",
                         )}
                       >
                         <div className={style.image}>
-                          <Link href={`/productDetails/${product._id}`}>
+                          <Link href={`/productDetails/${product?._id}`}>
                             <Image
-                              src={product.thumbnail}
-                              alt={product.title}
+                              src={product?.thumbnail}
+                              alt={product?.title}
                               width={500}
                               height={500}
                             />
@@ -187,7 +187,8 @@ const ProductsShop = () => {
                             <h2>NEW</h2>
                             {product.discount ? (
                               <h3>
-                                -{getDicount(product.discount, product.price)}%
+                                -{getDicount(product?.discount, product?.price)}
+                                %
                               </h3>
                             ) : null}
                           </div>

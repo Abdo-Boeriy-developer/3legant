@@ -1,24 +1,18 @@
-import React from "react";
 import style from "./articles.module.css";
 import Link from "next/link";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import Image from "next/image";
+import { axiosInstans } from "@/utils/axios";
 
 interface ArticleType {
   thumbnail: string;
   title: string;
+  _id: string;
 }
 
 const Articles = async () => {
-  const res = await fetch(
-    "https://3legent-backend.vercel.app/api/v1/home/featured-blogs",
-    {
-      cache: "no-store",
-    }
-  );
-  const data = await res.json();
-  const article: ArticleType[] = data.data;
-
+  // const res = await axiosInstans("home/featured-blogs");
+  // const article: ArticleType[] = res?.data?.data;
   return (
     <div className={style.articles}>
       <div className="container">
@@ -35,27 +29,28 @@ const Articles = async () => {
 
         <div className={style.articlesBox}>
           {/* Box */}
-          {article.map((item: ArticleType) => (
-            <div className={style.box}>
-              <Image
-                // src="/article1.jpg"
-                src={item.thumbnail}
-                alt="Article1"
-                width={500}
-                height={500}
-                loading="lazy"
-                sizes="(max-width: 768px) 100vw,
+          {/* {Array.isArray(article) &&
+            article?.map((item: ArticleType) => (
+              <div key={item._id} className={style.box}>
+                <Image
+                  // src="/article1.jpg"
+                  src={item?.thumbnail}
+                  alt="Article1"
+                  width={500}
+                  height={500}
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw,
          (max-width: 1200px) 50vw,
          33vw"
-              />
-              <h2>{item.title}</h2>
-              <Link href={""}>
-                Read More
-                <HiOutlineArrowRight />
-              </Link>
-            </div>
-          ))}
-          {/* 
+                />
+                <h2>{item?.title}</h2>
+                <Link href={""}>
+                  Read More
+                  <HiOutlineArrowRight />
+                </Link>
+              </div>
+            ))} */}
+          
           <div className={style.box}>
             <Image
               src="/article1.jpg"
@@ -106,7 +101,7 @@ const Articles = async () => {
               Read More
               <HiOutlineArrowRight />
             </Link>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

@@ -5,7 +5,6 @@ import { TbVectorBezier2 } from "react-icons/tb";
 import { CiGrid2V } from "react-icons/ci";
 import { CiGrid2H } from "react-icons/ci";
 import { StoreContext } from "@/Context/ContextProvider";
-import axios from "axios";
 import { axiosInstans } from "@/utils/axios";
 
 interface CategoryType {

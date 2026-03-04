@@ -9,7 +9,8 @@ const ProductDataImage = ({
   ProductDetailsData: DataProductType;
 }) => {
   const [dataImage, setDataImage] = useState<string>("");
-  const { images, thumbnail } = ProductDetailsData;
+
+  const { images, thumbnail, _id } = ProductDetailsData;
 
   useEffect(() => {
     if (images && images.length > 0) {
@@ -29,19 +30,20 @@ const ProductDataImage = ({
         </div>
       </div>
       <div className={style.smImage}>
-        {images.map((img, index) => {
-          return (
-            <div key={index} className={style.box}>
-              <Image
-                src={img}
-                alt=""
-                width={200}
-                height={100}
-                onClick={() => setDataImage(img)}
-              />
-            </div>
-          );
-        })}
+        {images &&
+          images?.map((img, i) => {
+            return (
+              <div key={i} className={style.box}>
+                <Image
+                  src={img}
+                  alt=""
+                  width={200}
+                  height={100}
+                  onClick={() => setDataImage(img)}
+                />
+              </div>
+            );
+          })}
         {/*  */}
       </div>
     </>

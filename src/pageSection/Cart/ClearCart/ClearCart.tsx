@@ -1,28 +1,23 @@
 "use client";
 import React, { useContext, useState } from "react";
 import style from "./ClearCart.module.css";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { CartStore } from "@/Context/CartContext";
 import Cookies from "js-cookie";
+import { axiosInstans } from "@/utils/axios";
 const ClearCart = () => {
   const { cartData, getCartDataApi } = useContext(CartStore);
 
   const [loading, setLoading] = useState(false);
 
   const clearCartApi = async () => {
-    const token = Cookies.get("authorization");
     try {
       setLoading(true);
-      const response = await axios.delete(
-        "https://3legent-backend.vercel.app/api/v1/cart/clear",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axiosInstans.delete("cart/clear", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.data.status === "success") {
         toast.success(response.data.message);

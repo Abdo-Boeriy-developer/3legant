@@ -1,9 +1,7 @@
 "use client";
-import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
-import Cookies from "js-cookie";
+import { axiosInstans } from "@/utils/axios";
 // Type
-
 interface children {
   children: React.ReactNode;
 }
@@ -58,6 +56,7 @@ export interface WishlistType {
   reviews: any[];
   createdAt: string;
   updatedAt: string;
+  products: WishlistType[];
 }
 
 export interface Version {
@@ -73,8 +72,8 @@ interface ContextType {
   cartData: Root[];
   setCartData: React.Dispatch<React.SetStateAction<Root[]>>;
   loading: boolean;
-  isWishlistData: WishlistType[];
-  setIsWisthlistData: React.Dispatch<React.SetStateAction<WishlistType[]>>;
+  isWishlistData: WishlistType | null;
+  setIsWisthlistData: React.Dispatch<React.SetStateAction<WishlistType | null>>;
   getCartDataApi: () => Promise<void>;
   getWisthListAi: () => Promise<void>;
   setIsOpenFlayCart: React.Dispatch<React.SetStateAction<boolean>>;
@@ -85,7 +84,7 @@ export const CartStore = createContext<ContextType>({
   cartData: [],
   setCartData: () => {},
   loading: false,
-  isWishlistData: [],
+  isWishlistData: null,
   setIsWisthlistData: () => {},
   getCartDataApi: async () => {},
   getWisthListAi: async () => {},
@@ -96,20 +95,14 @@ export const CartStore = createContext<ContextType>({
 const CartContext = ({ children }: children) => {
   const [cartData, setCartData] = useState<Root[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [isWishlistData, setIsWisthlistData] = useState<WishlistType[]>([]);
+  const [isWishlistData, setIsWisthlistData] = useState<WishlistType | null>(
+    null,
+  );
   const [isOpenFlayCart, setIsOpenFlayCart] = useState<boolean>(false);
   const getCartDataApi = async () => {
-    const token = Cookies.get("authorization");
     try {
       setLoading(true);
-      const response = await axios.get(
-        `https://3legent-backend.vercel.app/api/v1/cart`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axiosInstans(`cart`);
       setCartData(response.data.data.products);
     } catch (error) {
       // console.log("error", error);
@@ -122,18 +115,9 @@ const CartContext = ({ children }: children) => {
   }, []);
 
   const getWisthListAi = async () => {
-    const toekn = Cookies.get("authorization");
-
     try {
       setLoading(true);
-      const response = await axios.get(
-        "https://3legent-backend.vercel.app/api/v1/wishlist",
-        {
-          headers: {
-            Authorization: `Bearer ${toekn}`,
-          },
-        }
-      );
+      const response = await axiosInstans("wishlist");
       setIsWisthlistData(response.data.data);
     } catch (error) {
       // console.log("error", error);

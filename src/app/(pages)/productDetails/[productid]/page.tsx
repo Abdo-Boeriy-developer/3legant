@@ -5,8 +5,12 @@ import WriteReviews from "@/pageSection/ProductDetails/CustomerReviews/WriteRevi
 interface ProductDetailsType {
   params: { productid: string };
 }
-const Product = ({ params }: ProductDetailsType) => {
-  const { productid } = params;
+
+const Product = async ({ params }: ProductDetailsType) => {
+  // const { productid }: { productid: string } = useParams();
+  // console.log("params", params);
+  const { productid }: { productid: string } = await params;
+  // console.log("productid", productid);
 
   return (
     <div className={`${style.productDetailsId} container`}>
@@ -14,7 +18,7 @@ const Product = ({ params }: ProductDetailsType) => {
       <div className={`container`}>
         <ProductData productid={productid} />
       </div>
-      <WriteReviews />
+      <WriteReviews productid={productid } />
     </div>
   );
 };
