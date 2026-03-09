@@ -8,13 +8,12 @@ import { FiMinus } from "react-icons/fi";
 import Link from "next/link";
 import { CartStore } from "@/Context/CartContext";
 import { usePathname } from "next/navigation";
-import axios from "axios";
-import Cookies from "js-cookie";
 import toast from "react-hot-toast";
 import { axiosInstans } from "@/utils/axios";
 const FlayOutCart = () => {
   const { isOpenFlayCart, setIsOpenFlayCart, cartData, getCartDataApi } =
     useContext(CartStore);
+
   const totalPrice = cartData.reduce(
     (acc, item) => acc + item.product.price * item.quantity,
     0,
@@ -59,12 +58,22 @@ const FlayOutCart = () => {
                   <div className={style.item} key={item.product._id}>
                     <div className={style.images}>
                       <div className={style.img}>
-                        <Image
-                          src={item.product.images[0]}
+                        {item?.product?.thumbnail && (
+                          <Image
+                            // src={item?.product?.images[0]}
+                            src={item?.product?.thumbnail}
+                            alt="item"
+                            width={50}
+                            height={50}
+                          />
+                        )}
+                        {/* <Image
+                          // src={item?.product?.images[0]}
+                          src={item?.product?.thumbnail}
                           alt="item"
                           width={50}
                           height={50}
-                        />
+                        /> */}
                       </div>
                       <div className={style.itemTitle}>
                         <h3>{item?.product?.title}</h3>
@@ -83,7 +92,7 @@ const FlayOutCart = () => {
                     <div className={style.removeItem}>
                       <h3>{item.product.price}</h3>
                       <IoCloseOutline
-                        onClick={() => removeItem(item.product._id)}
+                        onClick={() => removeItem(item?.product?._id)}
                       />
                     </div>
                   </div>

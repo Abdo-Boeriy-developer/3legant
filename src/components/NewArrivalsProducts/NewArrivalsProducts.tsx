@@ -8,16 +8,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Cookies from "js-cookie";
 import "swiper/css";
 import "swiper/css/pagination";
-
 // import required modules
 import { Pagination } from "swiper/modules";
 import { FaArrowRightLong } from "react-icons/fa6";
-
 // import icons
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
-import { RiShoppingCart2Line } from "react-icons/ri";
 import { ArrivalsProduct } from "@/Types/arrivalsProductsType";
 import AddToCartAction from "@/Services/AdddtocartActon/AddToCartAction";
 import AddToWishlist from "@/Services/AddToWishlist/AddToWishlist";
@@ -27,13 +24,11 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { CiRead } from "react-icons/ci";
-import axios from "axios";
 import { axiosInstans } from "@/utils/axios";
 const NewArrivalsProducts = () => {
   const route = useRouter();
   const [products, setProducts] = useState<ArrivalsProduct[]>([]);
-  const { isWishlistData, getWisthListAi, getCartDataApi, cartData } =
-    useContext(CartStore);
+  const { isWishlistData, getWisthListAi, cartData } = useContext(CartStore);
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     const newArrayProductApi = async () => {
@@ -115,11 +110,11 @@ const NewArrivalsProducts = () => {
             ) : (
               products.map((pro) => {
                 const isInWisthlist = Array.isArray(isWishlistData?.products)
-                  ? isWishlistData?.products.some((p) => p._id === pro._id)
+                  ? isWishlistData?.products?.some((p) => p?._id === pro?._id)
                   : "";
 
-                const isInCart = cartData.some(
-                  (p) => p.product._id === pro._id,
+                const isInCart = cartData?.some(
+                  (p) => p?.product?._id === pro?._id,
                 );
 
                 return (
@@ -133,10 +128,9 @@ const NewArrivalsProducts = () => {
                                 <div className={style.new}>
                                   <h2>New</h2>
                                   {/* <h3>-50%</h3> */}
-
                                   {pro.discount ? (
                                     <h3>
-                                      -{getDicount(pro.discount, pro.price)}%
+                                      -{getDicount(pro?.discount, pro?.price)}%
                                     </h3>
                                   ) : null}
                                 </div>
@@ -146,14 +140,14 @@ const NewArrivalsProducts = () => {
                                   ) : (
                                     <CiHeart
                                       onClick={() =>
-                                        handleAddToWishlist(pro._id)
+                                        handleAddToWishlist(pro?._id)
                                       }
                                     />
                                   )}
                                 </div>
                               </div>
                               <Link
-                                href={`/productDetails/${pro._id}`}
+                                href={`/productDetails/${pro?._id}`}
                                 className={style.view}
                               >
                                 <CiRead />
@@ -161,8 +155,8 @@ const NewArrivalsProducts = () => {
                             </div>
                             {/* <Link href={`/productDetails/${pro._id}`}> */}
                             <Image
-                              src={pro.images[0]}
-                              alt={pro.description}
+                              src={pro?.thumbnail}
+                              alt={pro.description || "product is Nice"}
                               width={500}
                               height={500}
                               loading="lazy"
@@ -173,23 +167,21 @@ const NewArrivalsProducts = () => {
                                 isInCart ? "cursor-no-drop" : ""
                               }`}
                             >
-                              <AddToCartAction productId={pro._id} />
+                              <AddToCartAction productId={pro?._id} />
                             </div>
                           </div>
                         </div>
                       </div>
                       <div className={style.reting_title_price}>
                         <div className={style.reting}>
-                          <FaStar />
-                          <FaStar />
-                          <FaStar />
-                          <FaStar />
-                          <FaStar />
+                          {[...Array(5)].map((_, i) => (
+                            <FaStar key={i} />
+                          ))}
                         </div>
-                        <h2 className={style.title}>{pro.title}</h2>
+                        <h2 className={style.title}>{pro?.title}</h2>
                         <div className={style.price}>
-                          <h2>{pro.price - pro.discount}</h2>
-                          {!!pro.discount && <p>${pro.price}</p>}
+                          <h2>{pro?.price - pro?.discount}</h2>
+                          {!!pro?.discount && <p>${pro?.price}</p>}
                         </div>
                       </div>
                     </div>

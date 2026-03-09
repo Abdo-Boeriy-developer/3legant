@@ -23,7 +23,7 @@ const ProductDataImage = ({
   return (
     <>
       <div className={style.largImage}>
-        <Image src={dataImage} alt="" width={500} height={0} />
+        {dataImage && <Image src={dataImage} alt="" width={500} height={0} />}
         <div className={style.new}>
           <h2>NEW</h2>
           <h3>-50%</h3>

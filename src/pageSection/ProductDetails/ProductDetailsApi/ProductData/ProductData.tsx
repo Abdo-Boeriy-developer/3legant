@@ -10,11 +10,11 @@ import { axiosInstans } from "@/utils/axios";
 const ProductData = ({ productid }: { productid: string | null }) => {
   const [ProductDetailsData, setProductDetailsData] =
     useState<DataProductType | null>(null);
-  const [loading, setLoding] = useState(false);
+  const [loading, setLoding] = useState(true);
 
   const getProductDetailsApi = async () => {
     try {
-      setLoding(true);
+      // setLoding(true);
       const respone = await axiosInstans(`products/${productid}`);
       // console.log("respone", respone.data);
       setProductDetailsData(respone.data.data);

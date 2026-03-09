@@ -53,25 +53,25 @@ const ProductBottomCart = () => {
         <LoadingProductBottomCart />
       ) : cartData.length > 0 ? (
         cartData.map((pro) => {
-          const itemTotal = Number(pro.product.price) * pro.quantity || 0;
+          const itemTotal = Number(pro?.product?.price) * pro?.quantity || 0;
           return (
             <>
               <div key={pro.product._id} className={style.productBottom}>
                 <div className={style.iamgeProduct}>
                   <div className={style.img}>
                     <Image
-                      src={pro.product.images[0]}
+                      src={pro?.product?.thumbnail}
                       alt=""
                       width={100}
                       height={100}
                     />
                   </div>
                   <div className={style.textImageProduct}>
-                    <h2>{pro.product.title}</h2>
-                    <p>Color : {pro.product.versions[0].title}</p>
+                    <h2>{pro?.product?.title}</h2>
+                    <p>Color : {pro?.product?.versions[0]?.title}</p>
                     <button
                       className={style.remove}
-                      onClick={() => removeItemCart(pro.product._id)}
+                      onClick={() => removeItemCart(pro?.product?._id)}
                     >
                       <FiDelete />
                       Remove
@@ -80,19 +80,19 @@ const ProductBottomCart = () => {
                       <button
                         onClick={() =>
                           updateItemcart({
-                            productId: pro.product._id,
-                            quantity: pro.quantity - 1,
+                            productId: pro?.product?._id,
+                            quantity: pro?.quantity - 1,
                           })
                         }
                       >
                         <TiMinus />
                       </button>
-                      <h2>{pro.quantity}</h2>
+                      <h2>{pro?.quantity}</h2>
                       <button
                         onClick={() =>
                           updateItemcart({
-                            productId: pro.product._id,
-                            quantity: pro.quantity + 1,
+                            productId: pro?.product?._id,
+                            quantity: pro?.quantity + 1,
                           })
                         }
                       >
@@ -106,8 +106,8 @@ const ProductBottomCart = () => {
                     <button
                       onClick={() =>
                         updateItemcart({
-                          productId: pro.product._id,
-                          quantity: pro.quantity - 1,
+                          productId: pro?.product?._id,
+                          quantity: pro?.quantity - 1,
                         })
                       }
                     >
@@ -117,8 +117,8 @@ const ProductBottomCart = () => {
                     <button
                       onClick={() =>
                         updateItemcart({
-                          productId: pro.product._id,
-                          quantity: pro.quantity + 1,
+                          productId: pro?.product?._id,
+                          quantity: pro?.quantity + 1,
                         })
                       }
                     >
@@ -126,7 +126,7 @@ const ProductBottomCart = () => {
                     </button>
                   </div>
                   <div className={style.price}>
-                    <h2>$ {pro.product.price}</h2>
+                    <h2>$ {pro?.product?.price}</h2>
                   </div>
                   <div className={style.total}>
                     <h2>$ {itemTotal}</h2>

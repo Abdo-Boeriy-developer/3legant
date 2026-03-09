@@ -12,6 +12,7 @@ const Product = async ({ params }: ProductDetailsType) => {
   const { productid }: { productid: string } = await params;
   // console.log("productid", productid);
 
+  if(!productid) return
   return (
     <div className={`${style.productDetailsId} container`}>
       <TopLInk />

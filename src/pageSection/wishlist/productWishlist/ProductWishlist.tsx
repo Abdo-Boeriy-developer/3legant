@@ -5,8 +5,6 @@ import { IoCloseOutline } from "react-icons/io5";
 import { CartStore } from "@/Context/CartContext";
 import AddToCartAction from "@/Services/AdddtocartActon/AddToCartAction";
 import LoadingWishtList from "./LoadingWishtList";
-import axios from "axios";
-import Cookies from "js-cookie";
 import toast from "react-hot-toast";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import Image from "next/image";
@@ -42,12 +40,10 @@ const ProductWishlist = () => {
     <>
       {loading ? (
         <LoadingWishtList />
-      ) : isWishlistData?.products && isWishlistData.products.length > 0 ? (
+      ) : isWishlistData?.products && isWishlistData?.products?.length > 0 ? (
         isWishlistData?.products.map((item) => {
           // console.log("item", item);
-
-          const inIsCart = cartData.some((p) => p.product._id === item._id);
-
+          const inIsCart = cartData?.some((p) => p.product?._id === item?._id);
           return (
             <>
               <div className={style.ProductWishlist}>
@@ -65,15 +61,15 @@ const ProductWishlist = () => {
                   <div className={style.iamge_title_remove}>
                     <div
                       className={style.remove}
-                      onClick={() => deleteItemWisthList(item._id)}
+                      onClick={() => deleteItemWisthList(item?._id)}
                     >
                       <IoCloseOutline />
                     </div>
                     <div className={style.image_title}>
                       <div className={style.imageProduct}>
                         <Image
-                          src={item?.images[0]}
-                          alt=""
+                          src={item?.thumbnail}
+                          alt={item?.description || "Items"}
                           width={100}
                           height={100}
                         />
@@ -81,7 +77,7 @@ const ProductWishlist = () => {
                       <div className={style.title}>
                         <h2>{item?.title}</h2>
                         <p>Color: {item?.versions[0]?.title}</p>
-                        <p className={style?._price}>$ ${item?.price}</p>
+                        <p className={style._price}>$ ${item?.price}</p>
                       </div>
                     </div>
                   </div>
@@ -93,7 +89,7 @@ const ProductWishlist = () => {
                       {inIsCart ? (
                         <RiShoppingCart2Line className="text-2xl cursor-pointer" />
                       ) : (
-                        <AddToCartAction productId={item._id} />
+                        <AddToCartAction productId={item?._id} />
                       )}
                     </div>
                   </div>
@@ -105,7 +101,12 @@ const ProductWishlist = () => {
       ) : (
         <>
           <div className={style.empty}>
-            <Image src="/empty_box.webp" alt="" width={250} height={200} />
+            <Image
+              src="/empty_box.webp"
+              alt="Products Is Nice"
+              width={250}
+              height={200}
+            />
             <h2>🕸️ Your wishlist is empty.</h2>
           </div>
         </>

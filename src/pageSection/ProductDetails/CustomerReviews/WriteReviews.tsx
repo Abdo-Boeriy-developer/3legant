@@ -50,6 +50,7 @@ const WriteReviews = ({ productid }: { productid: string }) => {
   const [currentUserId, setCurrentUserID] = useState<{
     _id: string;
   }>();
+  const [checkUserId, setCheckUserId] = useState(false);
 
   // Get All Reviews
   useEffect(() => {
@@ -105,8 +106,8 @@ const WriteReviews = ({ productid }: { productid: string }) => {
       setRate({ rating: 0, comment: "" });
       const newUpdaeReview = respone?.data?.data;
       setAllReviews((prev) =>
-        prev.map((review) =>
-          review._id === reviewId ? { newUpdaeReview, ...review } : review,
+        prev.map((item) =>
+          item?._id === newUpdaeReview?._id ? { ...newUpdaeReview } : item,
         ),
       );
       setEditingReveiw(null);
@@ -142,7 +143,11 @@ const WriteReviews = ({ productid }: { productid: string }) => {
       localStorage.getItem("currentUserId") || "{}",
     );
     setCurrentUserID(currentUserId);
+    if (currentUserId === undefined) {
+      setCheckUserId(true);
+    }
     // Check User ID
+    console.log("CheckUserId", checkUserId);
   }, []);
   const checkUser = currentUserId?._id
     ? allReviews?.find((review) => review?.user?._id === currentUserId?._id)
@@ -175,8 +180,13 @@ const WriteReviews = ({ productid }: { productid: string }) => {
           <div className={style.userReting}>
             {[...Array(rate.rating)].map((_, i) => (
               <span
+                key={i}
                 className={style.rateFill}
-                onClick={() => setRate({ ...rate, rating: i + 1 })}
+                onClick={() => {
+                  if (!checkUser || editingReveiw) {
+                    setRate({ ...rate, rating: i + 1 });
+                  }
+                }}
               >
                 <BsFillStarFill />
               </span>
@@ -184,9 +194,11 @@ const WriteReviews = ({ productid }: { productid: string }) => {
             {[...Array(5 - rate.rating)].map((_, i) => (
               <span
                 key={i}
-                onClick={() =>
-                  setRate({ ...rate, rating: rate.rating + i + 1 })
-                }
+                onClick={() => {
+                  if (!checkUser || editingReveiw) {
+                    setRate({ ...rate, rating: rate.rating + i + 1 });
+                  }
+                }}
               >
                 <BsStar />
               </span>
@@ -216,7 +228,7 @@ const WriteReviews = ({ productid }: { productid: string }) => {
             type="button"
             onClick={() => {
               if (editingReveiw) {
-                EditProducts(editingReveiw._id);
+                EditProducts(editingReveiw?._id);
               } else {
                 AddComment();
               }
@@ -248,7 +260,7 @@ const WriteReviews = ({ productid }: { productid: string }) => {
       ) : (
         allReviews &&
         allReviews?.map((review) => (
-          <div className={style.comment} key={review._id}>
+          <div className={style.comment} key={review?._id}>
             <div className={style.imageUser}>
               {review?.user?.avatar && (
                 <Image
@@ -275,34 +287,35 @@ const WriteReviews = ({ productid }: { productid: string }) => {
                       </ul>
                     </div>
                   </div>
-                  {currentUserId && review.user._id === currentUserId._id && (
-                    <div className={style.Edit}>
-                      <FaRegEdit
-                        onClick={() => {
-                          setRate({
-                            rating: review.rating,
-                            comment: review.comment,
-                          });
-                          setEditingReveiw(review);
-                        }}
-                      />
-                      {loadding ? (
-                        <span className={style.LoadingTrash}>
-                          <AiOutlineLoading3Quarters />
-                        </span>
-                      ) : (
-                        <FaRegTrashCan
-                          onClick={() => removeComment(review?._id)}
+                  {currentUserId &&
+                    review?.user?._id === currentUserId?._id && (
+                      <div className={style.Edit}>
+                        <FaRegEdit
+                          onClick={() => {
+                            setRate({
+                              rating: review.rating,
+                              comment: review.comment,
+                            });
+                            setEditingReveiw(review);
+                          }}
                         />
-                      )}
-                      {/* <FaRegTrashCan
+                        {loadding ? (
+                          <span className={style.LoadingTrash}>
+                            <AiOutlineLoading3Quarters />
+                          </span>
+                        ) : (
+                          <FaRegTrashCan
+                            onClick={() => removeComment(review?._id)}
+                          />
+                        )}
+                        {/* <FaRegTrashCan
                         onClick={() => removeComment(review?._id)}
                       /> */}
-                      {/* <span className={style.LoadingTrash}>
+                        {/* <span className={style.LoadingTrash}>
                         <AiOutlineLoading3Quarters />
                       </span> */}
-                    </div>
-                  )}
+                      </div>
+                    )}
                 </div>
               </div>
               <p>{review?.comment}</p>
