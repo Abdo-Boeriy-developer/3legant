@@ -221,7 +221,7 @@ const WriteReviews = ({ productid }: { productid: string }) => {
             type="text"
             value={rate.comment}
             placeholder="Enter Your Commit..."
-            onChange={(e) => setRate({ ...rate, comment: e.target.value })}
+            onChange={(e) => setRate({ ...rate, comment: e?.target?.value })}
             disabled={!!checkUser && !editingReveiw}
           />
           <button

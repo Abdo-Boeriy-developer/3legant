@@ -17,6 +17,10 @@ export const headerLink: headerType[] = [
     path: "/productDetails",
   },
   {
+    name: "Blog",
+    path: "/blog",
+  },
+  {
     name: "Contact Us",
     path: "/contactUs",
   },

@@ -15,7 +15,7 @@ const FlayOutCart = () => {
     useContext(CartStore);
 
   const totalPrice = cartData.reduce(
-    (acc, item) => acc + item.product.price * item.quantity,
+    (acc, item) => acc + (item?.product?.price || 0) * item?.quantity,
     0,
   );
   const pathName = usePathname();
@@ -53,9 +53,9 @@ const FlayOutCart = () => {
               <IoCloseOutline onClick={() => setIsOpenFlayCart(false)} />
             </div>
             <div className={style.items}>
-              {cartData.length > 0 ? (
-                cartData.map((item) => (
-                  <div className={style.item} key={item.product._id}>
+              {cartData?.length > 0 ? (
+                cartData?.map((item) => (
+                  <div className={style.item} key={item?.product?._id}>
                     <div className={style.images}>
                       <div className={style.img}>
                         {item?.product?.thumbnail && (
@@ -90,7 +90,7 @@ const FlayOutCart = () => {
                       </div>
                     </div>
                     <div className={style.removeItem}>
-                      <h3>{item.product.price}</h3>
+                      <h3>{item?.product?.price}</h3>
                       <IoCloseOutline
                         onClick={() => removeItem(item?.product?._id)}
                       />
@@ -114,11 +114,11 @@ const FlayOutCart = () => {
             <ul className={style.subtotal}>
               <li>
                 <h2>SubTotal</h2>
-                <h3>$ {totalPrice}</h3>
+                <h3>$ {totalPrice && totalPrice}</h3>
               </li>
               <li>
                 <h2 className={style.total}>Total</h2>
-                <h3 className={style.price}>$ {totalPrice}</h3>
+                <h3 className={style.price}>$ {totalPrice && totalPrice}</h3>
               </li>
             </ul>
             <div className={style.buttons}>

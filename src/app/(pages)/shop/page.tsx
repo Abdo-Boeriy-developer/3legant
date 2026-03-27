@@ -7,7 +7,12 @@ const Shop = () => {
   return (
     <>
       <div className="container">
-        <HeroShop />
+        <HeroShop
+          shop={"Shop"}
+          route={"/shop"}
+          pageTitle={"Shop Page"}
+          Paragraph={"Let's design the place you always imagined."}
+        />
         <Filter_products />
       </div>
       <NewsLetter />
